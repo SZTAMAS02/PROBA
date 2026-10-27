@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boutique Travel Concierge | Személyre Szabott Utazástervezés Székelyudvarhely</title>
-  
-  <!-- Google Fonts -->
+  <title>Vándor Stúdió | Golden Hour Boutique Travel Atelier</title>
+
+  <!-- Google Fonts: Playfair Display + Plus Jakarta Sans + Cormorant Garamond -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Lucide Icons -->
+
+  <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
@@ -22,19 +22,19 @@
       theme: {
         extend: {
           fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
             serif: ['"Cormorant Garamond"', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
           colors: {
-            brand: {
-              gold: '#D4AF37',
-              goldLight: '#E8CA65',
-              goldDark: '#A6841E',
-              dark: '#0c0f12',
-              darkCard: '#13181f',
-              darkBorder: '#232b36',
-              sand: '#F7F5F0',
-              sandMuted: '#9BA3AF'
+            sunset: {
+              gold: '#F4C068',
+              amber: '#E08E3B',
+              coral: '#F87158',
+              champagne: '#FBE8B3',
+              sand: '#FFF8EA',
+              dusk: '#140D0C',
+              dark: '#0A0605'
             }
           }
         }
@@ -43,392 +43,368 @@
   </script>
 
   <style>
-    /* Custom styling for luxury finish */
     ::selection {
-      background: #D4AF37;
-      color: #0c0f12;
+      background: #F4C068;
+      color: #120906;
     }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #F3E7C4 0%, #D4AF37 50%, #AA8222 100%);
+
+    /* Living Golden Hour Ocean Seascape (Visible & Atmospheric) */
+    #golden-canvas-bg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      object-fit: cover;
+      pointer-events: none;
+      transition: opacity 0.8s ease-in-out, filter 0.8s ease-in-out;
+      /* Much brighter, transparent golden hour seascape! */
+      filter: brightness(0.68) saturate(1.22) contrast(1.05);
+    }
+
+    /* Soft ambient vignette allowing ocean & golden sunset to shine through cleanly */
+    .golden-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(circle at 50% 25%, rgba(244, 192, 104, 0.12) 0%, rgba(20, 13, 12, 0.42) 65%, rgba(10, 6, 5, 0.78) 100%);
+      pointer-events: none;
+    }
+
+    /* Ultra-Clean, Transparent Crystal Glassmorphism */
+    .glass-crystal {
+      background: rgba(18, 11, 10, 0.48);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(244, 192, 104, 0.22);
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .glass-crystal:hover {
+      border-color: rgba(244, 192, 104, 0.45);
+      background: rgba(24, 14, 12, 0.55);
+    }
+
+    .glass-crystal-highlight {
+      background: rgba(28, 16, 14, 0.58);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(244, 192, 104, 0.48);
+      box-shadow: 0 20px 50px -10px rgba(224, 142, 59, 0.25), inset 0 1px 1px rgba(255, 245, 220, 0.25);
+    }
+
+    .glass-input {
+      background: rgba(15, 8, 7, 0.55);
+      border: 1px solid rgba(244, 192, 104, 0.25);
+      backdrop-filter: blur(10px);
+    }
+
+    .glass-input:focus {
+      border-color: #F4C068;
+      background: rgba(20, 10, 9, 0.75);
+      box-shadow: 0 0 16px rgba(244, 192, 104, 0.35);
+    }
+
+    /* Sunset Gold & Amber Text Gradients */
+    .gold-shimmer-text {
+      background: linear-gradient(135deg, #FFF9EB 0%, #F4C068 45%, #E08E3B 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gold-border-gradient {
-      border-image: linear-gradient(to right, rgba(212, 175, 55, 0.4), rgba(212, 175, 55, 0.05)) 1;
+
+    .sunset-shimmer-text {
+      background: linear-gradient(135deg, #FBE8B3 0%, #F87158 55%, #E08E3B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .glass-card {
-      background: rgba(19, 24, 31, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(212, 175, 55, 0.15);
+
+    /* Ambient Sunset Floating Light Orbs */
+    .ambient-glow-sun {
+      position: absolute;
+      border-radius: 9999px;
+      filter: blur(120px);
+      pointer-events: none;
+      animation: floatSun 10s ease-in-out infinite alternate;
     }
-    .subtle-glow {
-      box-shadow: 0 0 35px -10px rgba(212, 175, 55, 0.15);
+
+    @keyframes floatSun {
+      0% { opacity: 0.35; transform: translateY(0px) scale(1); }
+      100% { opacity: 0.55; transform: translateY(-30px) scale(1.1); }
     }
-    input[type="range"] {
-      accent-color: #D4AF37;
+
+    /* Floating Golden Sparkles */
+    .sparkle-dot {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #F4C068;
+      filter: blur(0.5px);
+      box-shadow: 0 0 10px #F4C068, 0 0 20px #E08E3B;
+      animation: twinkle 5s ease-in-out infinite alternate;
     }
-    /* Hide scrollbar for tabs */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: translateY(0); }
+      50% { opacity: 0.9; transform: translateY(-15px) scale(1.4); }
+      100% { opacity: 0.3; transform: translateY(-30px) scale(1); }
     }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    input[type="checkbox"]:checked, input[type="radio"]:checked { accent-color: #F4C068; }
   </style>
 </head>
-<body class="bg-brand-dark text-slate-200 font-sans antialiased selection:bg-brand-gold selection:text-black">
+<body class="bg-sunset-dark text-slate-100 font-sans antialiased relative min-h-screen selection:bg-sunset-gold selection:text-black">
 
-  <!-- ================= TOP BRAND EXPERIMENT BAR ================= -->
-  <aside class="sticky top-0 z-50 bg-[#080a0c]/90 backdrop-blur-md border-b border-brand-darkBorder/60 py-2.5 px-4 text-xs transition-all">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2.5">
-      <div class="flex items-center gap-2 text-brand-gold font-medium">
-        <i data-lucide="sparkles" class="w-4 h-4"></i>
-        <span>Brand Név Választó (Kattints a teszteléshez):</span>
+  <!-- ================= LIVING GOLDEN HOUR OCEAN BACKGROUND ================= -->
+  <img id="golden-canvas-bg" 
+       src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2560&q=85" 
+       alt="Golden Hour Ocean Sunset Paradise" />
+
+  <!-- Subtle vignette layer ensuring text readability while background remains clearly visible -->
+  <div class="golden-overlay"></div>
+
+  <!-- Ambient Golden Sunlight Orbs -->
+  <div class="ambient-glow-sun w-[600px] h-[600px] bg-sunset-amber/30 top-10 left-1/4"></div>
+  <div class="ambient-glow-sun w-[500px] h-[500px] bg-sunset-coral/25 bottom-1/4 right-10"></div>
+
+  <!-- Decorative Golden Sparkle Dots -->
+  <div class="sparkle-dot top-[20%] left-[15%]" style="animation-delay: 0s;"></div>
+  <div class="sparkle-dot top-[35%] right-[20%]" style="animation-delay: 1.5s;"></div>
+  <div class="sparkle-dot top-[60%] left-[25%]" style="animation-delay: 3s;"></div>
+  <div class="sparkle-dot top-[75%] right-[15%]" style="animation-delay: 2.2s;"></div>
+
+  <!-- ================= TOP ATMOSPHERE & GOLDEN HOUR CONTROLLER ================= -->
+  <div class="relative z-50 bg-[#0e0706]/75 backdrop-blur-xl border-b border-sunset-gold/25 px-4 py-2.5 text-xs">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand switcher -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full lg:w-auto no-scrollbar py-0.5">
+        <span class="text-sunset-gold font-bold uppercase tracking-wider flex items-center gap-1.5 shrink-0 text-[11px]">
+          <i data-lucide="crown" class="w-3.5 h-3.5 text-sunset-gold"></i> Brand:
+        </span>
+        <button onclick="setBrandName('Vándor Stúdió')" class="brand-pill px-3 py-1 rounded-full border border-sunset-gold bg-sunset-gold/20 text-sunset-gold font-semibold text-[11px] whitespace-nowrap" data-name="Vándor Stúdió">Vándor Stúdió</button>
+        <button onclick="setBrandName('Aura Concierge')" class="brand-pill px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-300 hover:border-sunset-gold transition text-[11px] whitespace-nowrap" data-name="Aura Concierge">Aura Concierge</button>
+        <button onclick="setBrandName('Meridián Travel')" class="brand-pill px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-300 hover:border-sunset-gold transition text-[11px] whitespace-nowrap" data-name="Meridián Travel">Meridián Travel</button>
+        <button onclick="setBrandName('Compass & Co.')" class="brand-pill px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-300 hover:border-sunset-gold transition text-[11px] whitespace-nowrap" data-name="Compass & Co.">Compass & Co.</button>
+        <button onclick="setBrandName('TerraNova')" class="brand-pill px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-300 hover:border-sunset-gold transition text-[11px] whitespace-nowrap" data-name="TerraNova">TerraNova</button>
+        <button onclick="setBrandName('ViaLuxe Odorhei')" class="brand-pill px-3 py-1 rounded-full border border-white/10 bg-black/40 text-slate-300 hover:border-sunset-gold transition text-[11px] whitespace-nowrap" data-name="ViaLuxe Odorhei">ViaLuxe Odorhei</button>
       </div>
-      <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto no-scrollbar pb-1 md:pb-0">
-        <button onclick="setBrandName('Vandor Studio')" class="brand-pill px-3 py-1 rounded-full border border-brand-darkBorder bg-brand-darkCard text-slate-300 hover:border-brand-gold hover:text-brand-gold transition text-xs whitespace-nowrap active-brand" data-name="Vandor Studio">Vandor Studio</button>
-        <button onclick="setBrandName('Aura Concierge')" class="brand-pill px-3 py-1 rounded-full border border-brand-darkBorder bg-brand-darkCard text-slate-300 hover:border-brand-gold hover:text-brand-gold transition text-xs whitespace-nowrap" data-name="Aura Concierge">Aura Concierge</button>
-        <button onclick="setBrandName('Meridián Travel')" class="brand-pill px-3 py-1 rounded-full border border-brand-darkBorder bg-brand-darkCard text-slate-300 hover:border-brand-gold hover:text-brand-gold transition text-xs whitespace-nowrap" data-name="Meridián Travel">Meridián Travel</button>
-        <button onclick="setBrandName('Compass & Co.')" class="brand-pill px-3 py-1 rounded-full border border-brand-darkBorder bg-brand-darkCard text-slate-300 hover:border-brand-gold hover:text-brand-gold transition text-xs whitespace-nowrap" data-name="Compass & Co.">Compass & Co.</button>
-        <button onclick="setBrandName('TerraNova Atelier')" class="brand-pill px-3 py-1 rounded-full border border-brand-darkBorder bg-brand-darkCard text-slate-300 hover:border-brand-gold hover:text-brand-gold transition text-xs whitespace-nowrap" data-name="TerraNova Atelier">TerraNova Atelier</button>
-        <button onclick="setBrandName('ViaLuxe Odorhei')" class="brand-pill px-3 py-1 rounded-full border border-brand-darkBorder bg-brand-darkCard text-slate-300 hover:border-brand-gold hover:text-brand-gold transition text-xs whitespace-nowrap" data-name="ViaLuxe Odorhei">ViaLuxe Odorhei</button>
+
+      <!-- Golden Hour Atmosphere Selector -->
+      <div class="flex items-center gap-2 w-full lg:w-auto justify-end">
+        <span class="text-sunset-champagne font-semibold text-[11px] flex items-center gap-1.5 shrink-0">
+          <i data-lucide="sun" class="w-3.5 h-3.5 text-sunset-gold animate-spin" style="animation-duration: 18s;"></i> Golden Hour Hangulat:
+        </span>
+        
+        <select id="bg-preset-select" onchange="changeBackgroundPreset(this.value)" class="bg-black/60 border border-sunset-gold/40 text-sunset-sand rounded-lg px-2.5 py-1 text-xs outline-none focus:border-sunset-gold cursor-pointer">
+          <option value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2560&q=85">Maldív Arany Alkonyat & Lagúna</option>
+          <option value="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=2560&q=85">Santorini & Égei-tengeri Naplemente</option>
+          <option value="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=2560&q=85">Bali Uluwatu Sziklák & Pálmák</option>
+          <option value="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=2560&q=85">Amalfi & Positano Golden Hour</option>
+          <option value="https://images.unsplash.com/photo-1512100356356-de1b84283e18?auto=format&fit=crop&w=2560&q=85">Polinézia Bungalók Alkonyatban</option>
+          <option value="https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif">Aranyló Hullámzó Lagúna (Élő GIF)</option>
+          <option value="https://media.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif">Szellő a Pálmafákon (Élő GIF)</option>
+          <option value="custom">Saját Kép / GIF URL beillesztése...</option>
+        </select>
+
+        <button onclick="promptCustomBg()" title="Saját online fotó/GIF beállítása" class="p-1.5 rounded-lg bg-sunset-amber/20 border border-sunset-gold/40 hover:bg-sunset-gold hover:text-black transition text-sunset-gold">
+          <i data-lucide="link-2" class="w-3.5 h-3.5"></i>
+        </button>
       </div>
+
     </div>
-  </aside>
+  </div>
 
-  <!-- ================= MAIN NAVIGATION ================= -->
-  <nav class="bg-brand-dark/80 backdrop-blur-lg border-b border-white/5 sticky top-[41px] z-40 transition-all">
+  <!-- ================= LUXURY NAVIGATION ================= -->
+  <nav class="sticky top-[45px] z-40 bg-[#0c0605]/70 backdrop-blur-2xl border-b border-sunset-gold/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
       <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-goldDark to-brand-gold flex items-center justify-center text-brand-dark shadow-md shadow-brand-gold/20">
-          <i data-lucide="compass" class="w-6 h-6 stroke-[1.8] group-hover:rotate-45 transition-transform duration-500"></i>
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sunset-amber via-sunset-gold to-sunset-champagne flex items-center justify-center text-black shadow-lg shadow-sunset-amber/30 transition-transform duration-500 group-hover:scale-105">
+          <i data-lucide="sunset" class="w-6 h-6 stroke-[2.2]"></i>
         </div>
         <div>
-          <span class="font-serif text-2xl font-bold tracking-wider brand-title-text text-white">Vandor Studio</span>
-          <span class="block text-[10px] tracking-[0.25em] text-brand-gold uppercase">Travel Concierge &bull; Székelyudvarhely</span>
+          <span class="font-display text-2xl font-bold tracking-wider brand-title-text text-white">Vándor Stúdió</span>
+          <span class="block text-[10px] tracking-[0.28em] uppercase text-sunset-gold font-medium">Boutique Travel Atelier &bull; Székelyudvarhely</span>
         </div>
       </a>
 
-      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#itinerary" class="hover:text-brand-gold transition">Útiterv Demó</a>
-        <a href="#kalkulator" class="hover:text-brand-gold transition">Költségkalkulátor</a>
-        <a href="#csomagok" class="hover:text-brand-gold transition">Csomagok</a>
-        <a href="#elonyok" class="hover:text-brand-gold transition">A Banki & IT Előny</a>
-        <a href="#kapcsolat" class="hover:text-brand-gold transition">Kapcsolat</a>
+      <div class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-200">
+        <a href="#saved-to-reality" class="hover:text-sunset-gold transition">Saved to Reality</a>
+        <a href="#megkulonboztetes" class="hover:text-sunset-gold transition">A 3 Titkunk</a>
+        <a href="#barcelona-demo" class="hover:text-sunset-gold transition">Barcelona 100€</a>
+        <a href="#csomagok" class="hover:text-sunset-gold transition">Csomagok (9€-tól)</a>
+        <a href="#kerdoiv" class="hover:text-sunset-gold transition">Kérdőív</a>
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="#kapcsolat" class="relative inline-flex items-center justify-center px-5 py-2.5 text-xs uppercase tracking-widest font-semibold text-brand-dark transition-all duration-300 bg-gradient-to-r from-brand-goldLight to-brand-gold rounded-full hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02]">
-          Konzultáció kérése
+        <a href="#kerdoiv" class="px-5 py-2.5 text-xs uppercase tracking-widest font-extrabold text-sunset-dark bg-gradient-to-r from-sunset-champagne via-sunset-gold to-sunset-amber rounded-full hover:shadow-[0_0_25px_rgba(244,192,104,0.6)] hover:scale-105 transition-all">
+          Utazás Tervezése
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- ================= HERO SECTION ================= -->
-  <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24 px-4 sm:px-6">
-    <!-- Ambient backdrops -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-brand-gold/10 via-transparent to-transparent pointer-events-none"></div>
-    <div class="absolute -top-40 right-1/4 w-96 h-96 bg-brand-gold/10 rounded-full blur-[140px] pointer-events-none"></div>
-
+  <!-- ================= CINEMATIC GOLDEN HOUR HERO ================= -->
+  <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24 px-4 sm:px-6 z-10">
     <div class="max-w-5xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/5 text-brand-gold text-xs font-medium tracking-widest uppercase mb-8 backdrop-blur-sm animate-pulse">
-        <i data-lucide="map-pin" class="w-3.5 h-3.5"></i> Személyes Concierge &bull; Székelyföldről a Nagyvilágba
+      
+      <!-- Reel Tagline Badge -->
+      <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full border border-sunset-gold/40 bg-black/40 backdrop-blur-md text-sunset-champagne text-xs font-bold tracking-widest uppercase mb-8 shadow-xl shadow-black/40">
+        <i data-lucide="sparkles" class="w-4 h-4 text-sunset-gold animate-pulse"></i>
+        <span>Stop saving travel videos. Start planning your trip.</span>
       </div>
 
-      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-6">
-        Személyre szabott utazástervezés.<br>
-        <span class="gold-gradient-text italic font-normal">Nulla stressz, tiszta élmény.</span>
+      <h1 class="font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.08] tracking-tight mb-8 drop-shadow-2xl">
+        47 elmentett TikTok helyszíned van,<br>
+        <span class="gold-shimmer-text italic font-normal">de még mindig nincs épkézláb terved?</span>
       </h1>
 
-      <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-10">
-        Banki alaposságú költségvetés-tervezés, IT-szintű okos digitális útiterv és rejtett butik élmények. Nem katalógusos utak: minden járatot, villát és gasztro-megállót úgy hangolunk össze, ahogy ti szeretitek.
+      <p class="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-sunset-sand font-light leading-relaxed mb-12 drop-shadow">
+        Nem újabb inspirációra van szükséged, hanem egy olyan tervre, aminek <strong>valóban van értelme</strong>. Küldd el a mentett posztjaidat, költségkeretedet és dátumodat — mi kézzelfogható, logikus és költségoptimalizált útikalauzzá formáljuk.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-        <a href="#kapcsolat" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-brand-goldLight via-brand-gold to-brand-goldDark text-brand-dark font-semibold text-sm tracking-wider uppercase hover:shadow-[0_0_25px_rgba(212,175,55,0.45)] hover:scale-105 transition-all text-center flex items-center justify-center gap-2">
-          <span>Kérj kötetlen konzultációt</span>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-lg mx-auto">
+        <a href="#kerdoiv" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-sunset-champagne via-sunset-gold to-sunset-coral text-sunset-dark font-extrabold text-xs uppercase tracking-widest hover:shadow-[0_0_30px_rgba(244,192,104,0.6)] hover:scale-105 transition-all text-center flex items-center justify-center gap-2">
+          <span>Kérdőív kitöltése (3 perc)</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
-        <a href="#itinerary" class="w-full sm:w-auto px-8 py-4 rounded-full border border-white/20 hover:border-brand-gold/60 text-slate-200 hover:text-brand-gold text-sm font-medium tracking-wider uppercase transition-all backdrop-blur-sm text-center flex items-center justify-center gap-2">
-          <i data-lucide="file-text" class="w-4 h-4"></i>
-          <span>Demó útiterv megnézése</span>
+        <a href="#barcelona-demo" class="w-full sm:w-auto px-8 py-4 rounded-full glass-crystal text-sunset-sand hover:text-sunset-gold hover:border-sunset-gold text-xs font-bold uppercase tracking-widest transition-all text-center flex items-center justify-center gap-2">
+          <i data-lucide="map" class="w-4 h-4 text-sunset-gold"></i>
+          <span>Barcelona Minta (100€)</span>
         </a>
       </div>
 
-      <!-- Trust Badges -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 pt-16 mt-16 border-t border-white/10 text-left">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 rounded-lg bg-brand-darkCard border border-brand-darkBorder text-brand-gold">
-            <i data-lucide="shield-check" class="w-5 h-5"></i>
+      <!-- Trust highlights directly from the handwritten notes -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-20 text-left">
+        <div class="glass-crystal p-5 rounded-2xl">
+          <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold flex items-center gap-2 mb-1.5">
+            <i data-lucide="badge-percent" class="w-4 h-4 text-sunset-champagne"></i> Valódi Büdzsé
           </div>
-          <div>
-            <div class="text-xs text-slate-400 font-light uppercase tracking-wider">Garancia</div>
-            <div class="text-sm font-semibold text-white">Banki Költségkontroll</div>
-          </div>
+          <p class="text-xs text-slate-200">Nemcsak mennyi az összeg, hanem hogyan hozd ki belőle a legtöbbet.</p>
         </div>
 
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 rounded-lg bg-brand-darkCard border border-brand-darkBorder text-brand-gold">
-            <i data-lucide="smartphone" class="w-5 h-5"></i>
+        <div class="glass-crystal p-5 rounded-2xl">
+          <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold flex items-center gap-2 mb-1.5">
+            <i data-lucide="bookmark-check" class="w-4 h-4 text-sunset-champagne"></i> Saved to Reality
           </div>
-          <div>
-            <div class="text-xs text-slate-400 font-light uppercase tracking-wider">Formátum</div>
-            <div class="text-sm font-semibold text-white">Interaktív Zseb-App</div>
-          </div>
+          <p class="text-xs text-slate-200">TikTok és Reels linkekből egybefüggő napi logikus gyalogos útvonal.</p>
         </div>
 
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 rounded-lg bg-brand-darkCard border border-brand-darkBorder text-brand-gold">
-            <i data-lucide="tag" class="w-5 h-5"></i>
+        <div class="glass-crystal p-5 rounded-2xl">
+          <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold flex items-center gap-2 mb-1.5">
+            <i data-lucide="sun-medium" class="w-4 h-4 text-sunset-champagne"></i> Helyi Titkok
           </div>
-          <div>
-            <div class="text-xs text-slate-400 font-light uppercase tracking-wider">Megtakarítás</div>
-            <div class="text-sm font-semibold text-white">Nincs Irodai Felár</div>
-          </div>
+          <p class="text-xs text-slate-200">Olcsó autentikus éttermek, ingyenes kilátók és esős napos B-terv.</p>
         </div>
 
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 rounded-lg bg-brand-darkCard border border-brand-darkBorder text-brand-gold">
-            <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+        <div class="glass-crystal p-5 rounded-2xl">
+          <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold flex items-center gap-2 mb-1.5">
+            <i data-lucide="rotate-ccw" class="w-4 h-4 text-sunset-champagne"></i> 1x Ingyenes Finomhangolás
           </div>
-          <div>
-            <div class="text-xs text-slate-400 font-light uppercase tracking-wider">Lokáció</div>
-            <div class="text-sm font-semibold text-white">Székelyudvarhely</div>
-          </div>
+          <p class="text-xs text-slate-200">Személyes módosítás: ha olcsóbb éttermet vagy kényelmesebb tempót kérsz.</p>
         </div>
       </div>
+
     </div>
   </header>
 
-  <!-- ================= INTERACTIVE ITINERARY DEMO VIEWER ================= -->
-  <section id="itinerary" class="py-24 bg-[#0a0d11] relative border-y border-brand-darkBorder/50">
+  <!-- ================= SECTION 1: SAVED POST TO REALITY ================= -->
+  <section id="saved-to-reality" class="py-24 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold">Kézzelfogható Eredmény</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Mit kapsz kézhez a telefonodra?</h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Íme egy valós minta, amit egy udvarhelyi házaspárnak készítettünk egy 5 napos toszkán gasztro- és panoráma útra. Próbáld ki a napokat, nézd meg a költségvetés lebontását!
-        </p>
-      </div>
-
-      <!-- Mock Device / Tablet Itinerary Frame -->
-      <div class="glass-card rounded-2xl p-4 sm:p-8 subtle-glow border border-brand-gold/20">
-        
-        <!-- Header Info of the Trip -->
-        <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-brand-darkBorder gap-4">
-          <div>
-            <div class="flex items-center gap-2 text-xs text-brand-gold font-mono uppercase tracking-wider mb-1">
-              <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              Aktív Minta &bull; Valós költségvetéssel
-            </div>
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white">5 Napos Toszkána: Val d'Orcia, Pienza & Borteraszok</h3>
-            <p class="text-xs text-slate-400 mt-1">Indulás: Marosvásárhely / Kolozsvár &bull; Utazók: 2 felnőtt &bull; Stílus: Kényelmes Boutique</p>
-          </div>
-
-          <!-- Total Budget Badge calculated with banker accuracy -->
-          <div class="bg-brand-darkCard p-4 rounded-xl border border-brand-gold/30 flex items-center gap-4">
-            <div>
-              <div class="text-[11px] uppercase tracking-wider text-slate-400">Összköltségvetés (2 Főre)</div>
-              <div class="text-2xl font-serif font-bold text-brand-goldLight">1 420 € <span class="text-xs text-slate-400 font-sans font-normal">(710 € / fő)</span></div>
-            </div>
-            <div class="text-right border-l border-brand-darkBorder pl-4">
-              <div class="text-[11px] uppercase tracking-wider text-emerald-400">Spórolás irodához képest</div>
-              <div class="text-sm font-semibold text-emerald-300">~ 620 €</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Budget Breakdown Bar -->
-        <div class="py-6 border-b border-brand-darkBorder">
-          <div class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3 flex items-center justify-between">
-            <span>Banki pontosságú költségleosztás:</span>
-            <span class="text-brand-gold">100% transzparens, rejtett költségek nélkül</span>
-          </div>
-          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs">
-            <div class="bg-brand-darkCard/80 p-3 rounded-lg border border-white/5">
-              <div class="text-slate-400 mb-1 flex items-center gap-1.5"><i data-lucide="plane" class="w-3.5 h-3.5 text-brand-gold"></i> Repjegy + Podgyász</div>
-              <div class="text-white font-semibold text-sm">210 € <span class="text-slate-500 font-normal">/ 2 fő</span></div>
-              <div class="text-[10px] text-slate-500 mt-0.5">Wizz Air közvetlen járat</div>
-            </div>
-            <div class="bg-brand-darkCard/80 p-3 rounded-lg border border-white/5">
-              <div class="text-slate-400 mb-1 flex items-center gap-1.5"><i data-lucide="home" class="w-3.5 h-3.5 text-brand-gold"></i> Agriturismo Villa</div>
-              <div class="text-white font-semibold text-sm">540 € <span class="text-slate-500 font-normal">/ 4 éj</span></div>
-              <div class="text-[10px] text-slate-500 mt-0.5">Medencés kőház Pienza mellett</div>
-            </div>
-            <div class="bg-brand-darkCard/80 p-3 rounded-lg border border-white/5">
-              <div class="text-slate-400 mb-1 flex items-center gap-1.5"><i data-lucide="car" class="w-3.5 h-3.5 text-brand-gold"></i> Bérautó + Full CASCO</div>
-              <div class="text-white font-semibold text-sm">190 €</div>
-              <div class="text-[10px] text-slate-500 mt-0.5">Fiat 500 Hybrid, 0 önrész</div>
-            </div>
-            <div class="bg-brand-darkCard/80 p-3 rounded-lg border border-white/5">
-              <div class="text-slate-400 mb-1 flex items-center gap-1.5"><i data-lucide="utensils" class="w-3.5 h-3.5 text-brand-gold"></i> Étkezés & Kóstolók</div>
-              <div class="text-white font-semibold text-sm">380 €</div>
-              <div class="text-[10px] text-slate-500 mt-0.5">Privát borkóstoló + vacsorák</div>
-            </div>
-            <div class="bg-brand-darkCard/80 p-3 rounded-lg border border-white/5 col-span-2 sm:col-span-1">
-              <div class="text-slate-400 mb-1 flex items-center gap-1.5"><i data-lucide="shield" class="w-3.5 h-3.5 text-brand-gold"></i> Vész & Üzemanyag</div>
-              <div class="text-white font-semibold text-sm">100 €</div>
-              <div class="text-[10px] text-slate-500 mt-0.5">Revolut zsebre számolva</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Day Switcher Tabs -->
-        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-6">
-          <button onclick="switchDay(1)" id="day-tab-1" class="day-tab px-5 py-2.5 rounded-xl border border-brand-gold bg-brand-gold text-brand-dark font-semibold text-xs tracking-wider uppercase transition whitespace-nowrap">
-            1. Nap: Érkezés & Val d'Orcia naplemente
-          </button>
-          <button onclick="switchDay(2)" id="day-tab-2" class="day-tab px-5 py-2.5 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-slate-300 font-semibold text-xs tracking-wider uppercase transition whitespace-nowrap hover:border-brand-gold/50">
-            2. Nap: Pienza pecorino & Titkos Ciprus-fasor
-          </button>
-          <button onclick="switchDay(3)" id="day-tab-3" class="day-tab px-5 py-2.5 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-slate-300 font-semibold text-xs tracking-wider uppercase transition whitespace-nowrap hover:border-brand-gold/50">
-            3. Nap: Montepulciano borpincék
-          </button>
-          <button onclick="switchDay(4)" id="day-tab-4" class="day-tab px-5 py-2.5 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-slate-300 font-semibold text-xs tracking-wider uppercase transition whitespace-nowrap hover:border-brand-gold/50">
-            4. Nap: Bagno Vignoni termálfürdő
-          </button>
-          <button onclick="switchDay(5)" id="day-tab-5" class="day-tab px-5 py-2.5 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-slate-300 font-semibold text-xs tracking-wider uppercase transition whitespace-nowrap hover:border-brand-gold/50">
-            5. Nap: San Gimignano & Hazautazás
-          </button>
-        </div>
-
-        <!-- Dynamic Day Content Box -->
-        <div id="day-content" class="bg-brand-darkCard/90 rounded-xl p-6 border border-brand-darkBorder text-slate-300">
-          <!-- Populated by JavaScript -->
-        </div>
-
-        <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4 bg-brand-gold/10 p-4 rounded-xl border border-brand-gold/20">
-          <div class="flex items-center gap-3">
-            <div class="p-2 rounded-lg bg-brand-gold text-brand-dark">
-              <i data-lucide="download" class="w-4 h-4"></i>
-            </div>
-            <div class="text-xs text-slate-300">
-              <strong class="text-white">Interaktív telefonos formátum:</strong> Az ügyfél a teljes programot egyetlen offline linkként kapja meg Google Maps pinekkel, éttermi asztalfoglalási hivatkozásokkal és parkolási GPS koordinátákkal.
-            </div>
-          </div>
-          <button onclick="document.getElementById('kapcsolat').scrollIntoView({behavior: 'smooth'})" class="px-4 py-2 bg-brand-gold text-brand-dark rounded-lg text-xs font-semibold whitespace-nowrap hover:bg-brand-goldLight transition">
-            Ilyen útitervet szeretnék
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= INTERACTIVE COST & CONCIERGE CALCULATOR ================= -->
-  <section id="kalkulator" class="py-24 bg-brand-dark relative overflow-hidden">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold">Átlátható Számok</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Utazási & Tervezési Kalkulátor</h2>
-        <p class="text-slate-400 text-sm">
-          Állítsd be a paramétereket, és nézd meg, mennyit takaríthatsz meg az intelligens, közvetlen foglalási stratégiánkkal a merev utazási irodákhoz képest!
+        <span class="text-xs font-extrabold uppercase tracking-widest text-sunset-champagne">A Kaotikus Listák Megszelídítése</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">
+          Saved Post to Reality: <span class="gold-shimmer-text italic">Hogyan dolgozunk?</span>
+        </h2>
+        <p class="text-sunset-sand/90 text-sm sm:text-base">
+          Mindenki menti a lenyűgöző videókat, de amikor megérkezel, egy összefüggéstelen 100 darabos lista vár, amiből semmi sem illeszkedik egymáshoz. Így tesszük élménnyé:
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <!-- Controls (7 cols) -->
-        <div class="lg:col-span-7 space-y-6 glass-card p-6 sm:p-8 rounded-2xl border border-brand-darkBorder">
-          
-          <!-- Slider 1: Days -->
-          <div>
-            <div class="flex justify-between items-center mb-2">
-              <label class="text-sm font-semibold text-white flex items-center gap-2">
-                <i data-lucide="calendar" class="w-4 h-4 text-brand-gold"></i> Utazás időtartama:
-              </label>
-              <span id="calc-days-label" class="text-sm font-bold text-brand-gold font-mono">5 nap</span>
+        
+        <!-- Left: Chaotic Phone Screen -->
+        <div class="lg:col-span-5 bg-black/60 rounded-3xl p-6 border border-rose-500/40 backdrop-blur-xl relative">
+          <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
+            <div class="flex items-center gap-2 text-rose-300 text-xs font-bold">
+              <i data-lucide="alert-octagon" class="w-4 h-4 text-rose-400"></i>
+              <span>Előtte: A Mentett Videók Káosza</span>
             </div>
-            <input id="calc-days" type="range" min="3" max="16" value="5" step="1" class="w-full h-2 bg-brand-darkCard rounded-lg cursor-pointer" oninput="updateCalculator()">
-            <div class="flex justify-between text-[10px] text-slate-500 mt-1">
-              <span>Hétvége (3 nap)</span>
-              <span>1 hét (7-8 nap)</span>
-              <span>2+ hét (16 nap)</span>
+            <span class="text-[10px] bg-rose-500/25 text-rose-200 px-2.5 py-0.5 rounded font-mono">114 Mentett Hely</span>
+          </div>
+
+          <div class="space-y-2.5 text-xs text-slate-200 font-mono">
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span>📍 TikTok: "The Dreamiest Sunset Spot"</span>
+              <span class="text-rose-400 text-[10px] font-bold">3.5 óra a hoteltől!</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span>📍 Insta Reel: "Hidden Cliff Cave"</span>
+              <span class="text-rose-400 text-[10px] font-bold">Dagálykor életveszélyes</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span>📍 Mentett poszt: "Tapas bar under 4€"</span>
+              <span class="text-rose-400 text-[10px] font-bold">Hétfőnként zárva</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <span>📍 TikTok: "Best Beach Lounge"</span>
+              <span class="text-rose-400 text-[10px] font-bold">150€ minimum fogyasztás</span>
             </div>
           </div>
 
-          <!-- Select 2: Travel Style -->
-          <div>
-            <label class="text-sm font-semibold text-white flex items-center gap-2 mb-2">
-              <i data-lucide="sparkles" class="w-4 h-4 text-brand-gold"></i> Utazási stílus & Szálláskategória:
-            </label>
-            <div class="grid grid-cols-3 gap-2">
-              <button type="button" onclick="setStyle('smart')" id="btn-style-smart" class="style-btn p-3 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-left transition hover:border-brand-gold/40">
-                <div class="text-xs font-bold text-white">Smart Chic</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">Költségtudatos, de igényes</div>
-              </button>
-              <button type="button" onclick="setStyle('boutique')" id="btn-style-boutique" class="style-btn p-3 rounded-xl border border-brand-gold bg-brand-gold/10 text-left transition">
-                <div class="text-xs font-bold text-brand-gold">Boutique & Karakter</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">Bájos villák, dizájn hotelek</div>
-              </button>
-              <button type="button" onclick="setStyle('luxury')" id="btn-style-luxury" class="style-btn p-3 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-left transition hover:border-brand-gold/40">
-                <div class="text-xs font-bold text-white">VIP Nászút</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">5★ luxus, privát transzferek</div>
-              </button>
-            </div>
+          <div class="mt-4 pt-4 border-t border-white/10 text-[11px] text-rose-200/90 italic text-center">
+            „Ott álltok éhesen, fáradtan a hőségben a telefonotokat idegesen pörgetve...”
           </div>
-
-          <!-- Select 3: Destination -->
-          <div>
-            <label class="text-sm font-semibold text-white flex items-center gap-2 mb-2">
-              <i data-lucide="globe" class="w-4 h-4 text-brand-gold"></i> Úticél típusa:
-            </label>
-            <div class="grid grid-cols-3 gap-2">
-              <button type="button" onclick="setDest('europe')" id="btn-dest-europe" class="dest-btn p-3 rounded-xl border border-brand-gold bg-brand-gold/10 text-left transition">
-                <div class="text-xs font-bold text-brand-gold">Európa</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">Olasz, Spanyol, Portugál</div>
-              </button>
-              <button type="button" onclick="setDest('roadtrip')" id="btn-dest-roadtrip" class="dest-btn p-3 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-left transition hover:border-brand-gold/40">
-                <div class="text-xs font-bold text-white">Roadtrip</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">Izland, Azori, Balkán</div>
-              </button>
-              <button type="button" onclick="setDest('exotic')" id="btn-dest-exotic" class="dest-btn p-3 rounded-xl border border-brand-darkBorder bg-brand-darkCard text-left transition hover:border-brand-gold/40">
-                <div class="text-xs font-bold text-white">Egzotikus</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">Bali, Japán, Thaiföld</div>
-              </button>
-            </div>
-          </div>
-
         </div>
 
-        <!-- Calculated Summary Card (5 cols) -->
-        <div class="lg:col-span-5 bg-gradient-to-b from-brand-darkCard to-[#0c0f14] p-6 sm:p-8 rounded-2xl border border-brand-gold/40 relative subtle-glow">
-          <div class="text-xs uppercase tracking-widest text-brand-gold font-semibold mb-4">Becsült Elemzés</div>
-          
-          <div class="space-y-4 pb-6 border-b border-brand-darkBorder">
-            <div class="flex justify-between items-center text-sm">
-              <span class="text-slate-400">Várható teljes útiköltség (2 főre):</span>
-              <span id="calc-total-budget" class="font-bold text-white font-mono text-base">1 350 €</span>
+        <!-- Center arrow bridge -->
+        <div class="lg:col-span-2 text-center flex flex-col items-center justify-center gap-3">
+          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sunset-amber via-sunset-gold to-sunset-champagne text-sunset-dark flex items-center justify-center shadow-xl shadow-sunset-amber/40 font-bold">
+            <i data-lucide="sparkles" class="w-7 h-7"></i>
+          </div>
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-sunset-gold">Átrendezzük &bull; Szűrjük</span>
+        </div>
+
+        <!-- Right: Clean Luxury Solution -->
+        <div class="lg:col-span-5 glass-crystal-highlight rounded-3xl p-6 relative">
+          <div class="flex items-center justify-between pb-4 border-b border-sunset-gold/25 mb-4">
+            <div class="flex items-center gap-2 text-sunset-gold text-xs font-bold">
+              <i data-lucide="check-check" class="w-4 h-4 text-sunset-champagne"></i>
+              <span>Utána: Bejárható Napi Útikalauz</span>
             </div>
-            <div class="flex justify-between items-center text-sm">
-              <span class="text-slate-400">Hagyományos irodai csomagár kb.:</span>
-              <span id="calc-agency-price" class="text-rose-300 line-through font-mono">1 890 €</span>
+            <span class="text-[10px] bg-sunset-gold/20 text-sunset-champagne px-2.5 py-0.5 rounded font-mono font-bold">Logikus Sorrend</span>
+          </div>
+
+          <div class="space-y-3 text-xs">
+            <div class="p-3.5 rounded-xl bg-black/40 border border-sunset-gold/25 flex items-start gap-3">
+              <div class="w-6 h-6 rounded-md bg-sunset-gold/20 text-sunset-gold flex items-center justify-center font-bold text-[10px] shrink-0">1</div>
+              <div>
+                <strong class="text-white">Egybefüggő geográfiai útvonal:</strong> Nem utazol órákat feleslegesen; minden megálló egymás után következik logikus sorrendben.
+              </div>
             </div>
-            <div class="p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl flex items-center justify-between">
-              <span class="text-xs text-emerald-300 font-medium">Becsült megtakarításotok:</span>
-              <span id="calc-savings" class="text-base font-bold text-emerald-400 font-mono">~ 540 €</span>
+
+            <div class="p-3.5 rounded-xl bg-black/40 border border-sunset-gold/25 flex items-start gap-3">
+              <div class="w-6 h-6 rounded-md bg-sunset-gold/20 text-sunset-gold flex items-center justify-center font-bold text-[10px] shrink-0">2</div>
+              <div>
+                <strong class="text-white">Valós árak & nyitvatartás:</strong> Kiszűrjük a túlhájpolt kamu helyeket, a rejtett költségeket pedig előre jelezzük.
+              </div>
+            </div>
+
+            <div class="p-3.5 rounded-xl bg-black/40 border border-sunset-gold/25 flex items-start gap-3">
+              <div class="w-6 h-6 rounded-md bg-sunset-gold/20 text-sunset-gold flex items-center justify-center font-bold text-[10px] shrink-0">3</div>
+              <div>
+                <strong class="text-white">Esős napos & olcsó alternatívák:</strong> Ha zápor jön, azonnal ott a fedett gasztro- vagy kulturális B-terv.
+              </div>
             </div>
           </div>
 
-          <!-- Concierge Fee -->
-          <div class="pt-6">
-            <div class="text-xs uppercase tracking-wider text-slate-400 mb-1">A mi tervezési concierge díjunk:</div>
-            <div class="flex items-baseline gap-2">
-              <span id="calc-concierge-fee" class="text-3xl sm:text-4xl font-serif font-bold text-brand-gold">190 €</span>
-              <span class="text-xs text-slate-400">/ teljes utazás (nem fejenként!)</span>
-            </div>
-            <p class="text-[11px] text-slate-400 mt-3 leading-relaxed">
-              Már a repjegy-átszállás és a bérautó-biztosítás optimalizálásával visszahozzuk a díjunkat, a felszabaduló 30+ óra kutatási időtökről nem is beszélve.
-            </p>
-
-            <a href="#kapcsolat" class="mt-6 w-full py-3 bg-gradient-to-r from-brand-gold to-brand-goldDark text-brand-dark font-bold text-xs uppercase tracking-wider rounded-xl text-center block hover:opacity-90 transition">
-              Ezt a csomagot kérem
-            </a>
+          <div class="mt-4 pt-4 border-t border-sunset-gold/20 flex items-center justify-between text-xs text-sunset-gold font-bold">
+            <span>Canva zseb-dizájn + Google Maps PIN-ek</span>
+            <span class="text-white font-mono bg-sunset-amber/30 px-2.5 py-1 rounded">19 € Social to Trip</span>
           </div>
         </div>
 
@@ -437,106 +413,83 @@
     </div>
   </section>
 
-  <!-- ================= 3 SIGNATURE PACKAGES ================= -->
-  <section id="csomagok" class="py-24 bg-[#0a0d11] border-t border-brand-darkBorder/40">
+  <!-- ================= SECTION 2: THE 3 CORE PILLARS FROM NOTES ================= -->
+  <section id="megkulonboztetes" class="py-24 relative z-10 bg-black/35 backdrop-blur-md border-y border-sunset-gold/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold">Dedikált Szolgáltatások</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">A 3 Fő Tervezési Csomagunk</h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Minden csomag tartalmazza a banki pontosságú Excel/PDF költségvetést, az interaktív okostelefonos útitervet és a közvetlen foglalási linkeket.
+        <span class="text-xs font-extrabold uppercase tracking-widest text-sunset-gold">Kézzel Írt Stratégia &bull; Kézzelfogható Érték</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">
+          A 3 Fő Megkülönböztetésünk
+        </h2>
+        <p class="text-sunset-sand/90 text-sm">
+          Nem sablonos katalógus-tippeket adunk, hanem a te pénztárcádhoz és érdeklődésedhez igazítjuk a teljes napirendet.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Package 1 -->
-        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border border-brand-darkBorder hover:border-brand-gold/40 transition duration-300">
+        <!-- Pillar 1 -->
+        <div class="glass-crystal rounded-3xl p-8 transition duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold mb-6">
-              <i data-lucide="coffee" class="w-6 h-6"></i>
+            <div class="w-14 h-14 rounded-2xl bg-sunset-gold/15 border border-sunset-gold/40 flex items-center justify-center text-sunset-gold mb-6 font-display font-black text-2xl">
+              1
             </div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-brand-gold">3–5 Nap</div>
-            <h3 class="font-serif text-2xl font-bold text-white mt-1 mb-3">Weekend & City Break</h3>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed">
-              Gyors feltöltődés, európai kulturális vagy gasztro-hétvégék (Róma, Lisszabon, Valencia, Párizs).
+            <h3 class="font-display text-2xl font-bold text-white mb-3">Valódi Büdzsé-Optimalizálás</h3>
+            <p class="text-xs text-slate-200 leading-relaxed mb-6">
+              Nem csak azt mondjuk meg, hogy mi mennyibe kerül, hanem azt, hogy <strong>hogyan lehet az adott összegből a legtöbbet kihozni</strong>.
             </p>
-            <div class="text-2xl font-serif font-bold text-white mb-6">
-              150 € <span class="text-xs font-sans text-slate-500 font-normal">/ utazás</span>
-            </div>
-
-            <ul class="space-y-3 text-xs text-slate-300 mb-8">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Legjobb repülési opciók (Erdélyből vagy Bp-ről)</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> 3 kurátori butikhotel / apartman javaslat</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Percről percre látnivaló & gasztro javaslatok</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Offline Google Maps pin gyűjtemény</li>
+            <ul class="text-xs text-sunset-sand/90 space-y-2.5">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Mire éri meg többet költeni, és min spórolj</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Külön kezeljük a szállást, a helyi költést és a repjegyet</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Fillérre kalkulált helyszíni napidíj-keret</li>
             </ul>
           </div>
-
-          <a href="#kapcsolat" class="w-full py-3 rounded-xl border border-white/20 hover:border-brand-gold text-slate-200 hover:text-brand-gold font-semibold text-xs uppercase tracking-wider text-center transition">
-            Érdekel a City Break
-          </a>
+          <div class="mt-8 pt-4 border-t border-sunset-gold/20 text-[11px] text-sunset-gold font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="landmark" class="w-3.5 h-3.5"></i> Banki precizitású kalkuláció
+          </div>
         </div>
 
-        <!-- Package 2 (Highlighted) -->
-        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-2 border-brand-gold bg-gradient-to-b from-brand-darkCard via-brand-darkCard to-[#141a24] relative shadow-[0_0_30px_rgba(212,175,55,0.15)]">
-          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-dark px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
-            Legnépszerűbb
-          </div>
-
+        <!-- Pillar 2 -->
+        <div class="glass-crystal-highlight rounded-3xl p-8 transition duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-brand-gold flex items-center justify-center text-brand-dark mb-6">
-              <i data-lucide="compass" class="w-6 h-6"></i>
+            <div class="w-14 h-14 rounded-2xl bg-sunset-amber/25 border border-sunset-gold/50 flex items-center justify-center text-sunset-champagne mb-6 font-display font-black text-2xl">
+              2
             </div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-brand-gold">7–14 Nap</div>
-            <h3 class="font-serif text-2xl font-bold text-white mt-1 mb-3">Nagy Utazás & Családi Kaland</h3>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed">
-              Európai körutazások, roadtripek vagy tengerentúli családi utazások logisztikai stressz nélkül.
+            <h3 class="font-display text-2xl font-bold text-white mb-3">Saved Post to Reality</h3>
+            <p class="text-xs text-slate-200 leading-relaxed mb-6">
+              Elküldöd a TikTok és Instagram mentett videóidat, listáidat – mi egyetlen, <strong>térképes, bejárható napi tervvé fűzzük össze</strong>.
             </p>
-            <div class="text-2xl font-serif font-bold text-brand-gold mb-6">
-              290 € <span class="text-xs font-sans text-slate-400 font-normal">/ utazás</span>
-            </div>
-
-            <ul class="space-y-3 text-xs text-slate-300 mb-8">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Bérautó & belső transzferek optimalizálása</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Gyerekbarát vagy élményközpontú útvonalterv</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Fillérre pontos költségkeret (szállás, étel, benzin)</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Sürgősségi WhatsApp segítség utazás alatt</li>
+            <ul class="text-xs text-sunset-sand/90 space-y-2.5">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Elérhetőség és nyitvatartás azonnali ellenőrzése</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Logikus sorrendbe állított napi séták</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Kiegészítés a hiányzó helyi láncszemekkel</li>
             </ul>
           </div>
-
-          <a href="#kapcsolat" class="w-full py-3 rounded-xl bg-gradient-to-r from-brand-goldLight to-brand-gold text-brand-dark font-bold text-xs uppercase tracking-wider text-center transition hover:shadow-lg">
-            Családi út megtervezése
-          </a>
+          <div class="mt-8 pt-4 border-t border-sunset-gold/25 text-[11px] text-sunset-champagne font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="video" class="w-3.5 h-3.5"></i> Kaotikus videókból stresszmentes valóság
+          </div>
         </div>
 
-        <!-- Package 3 -->
-        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border border-brand-darkBorder hover:border-brand-gold/40 transition duration-300">
+        <!-- Pillar 3 -->
+        <div class="glass-crystal rounded-3xl p-8 transition duration-300 flex flex-col justify-between">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold mb-6">
-              <i data-lucide="gem" class="w-6 h-6"></i>
+            <div class="w-14 h-14 rounded-2xl bg-sunset-gold/15 border border-sunset-gold/40 flex items-center justify-center text-sunset-gold mb-6 font-display font-black text-2xl">
+              3
             </div>
-            <div class="text-xs font-semibold uppercase tracking-widest text-brand-gold">10–21+ Nap</div>
-            <h3 class="font-serif text-2xl font-bold text-white mt-1 mb-3">Prémium Nászút & Expedíció</h3>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed">
-              Japán, Bali, Maldív, USA Nyugati part. Életed nagy útja, ahol minden egyes pillanatnak hibátlannak kell lennie.
+            <h3 class="font-display text-2xl font-bold text-white mb-3">Gondosan Válogatott Ajánlások</h3>
+            <p class="text-xs text-slate-200 leading-relaxed mb-6">
+              Nem csak a legnagyobb, zsúfolt turistalátványosságokat írjuk be, hanem olyan helyeket, amikért <strong>valóban megéri elutazni</strong>.
             </p>
-            <div class="text-2xl font-serif font-bold text-white mb-6">
-              490 € <span class="text-xs font-sans text-slate-500 font-normal">/ utazás</span>
-            </div>
-
-            <ul class="space-y-3 text-xs text-slate-300 mb-8">
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Teljes körű VIP concierge & asztalfoglalások</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Rejtett privát túrák és egyedi fotós helyszínek</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> Luxus villák & autentikus szállások ötvözése</li>
-              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-gold"></i> 0-24 közvetlen személyes vészhelyzeti kapcsolat</li>
+            <ul class="text-xs text-sunset-sand/90 space-y-2.5">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Olcsó, autentikus helyi éttermek és kávézók</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Ingyenes programok és rejtett panorámák</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Külön esős napos forgatókönyv</li>
             </ul>
           </div>
-
-          <a href="#kapcsolat" class="w-full py-3 rounded-xl border border-white/20 hover:border-brand-gold text-slate-200 hover:text-brand-gold font-semibold text-xs uppercase tracking-wider text-center transition">
-            Nászút egyeztetés
-          </a>
+          <div class="mt-8 pt-4 border-t border-sunset-gold/20 text-[11px] text-sunset-gold font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="sparkle" class="w-3.5 h-3.5"></i> Helyismeret & személyes szűrés
+          </div>
         </div>
 
       </div>
@@ -544,170 +497,548 @@
     </div>
   </section>
 
-  <!-- ================= THE BANKER & IT ADVANTAGE (WHY US) ================= -->
-  <section id="elonyok" class="py-24 bg-brand-dark relative">
+  <!-- ================= SECTION 3: 48H IN BARCELONA UNDER 100€ (DAY 1 & DAY 2) ================= -->
+  <section id="barcelona-demo" class="py-24 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold">A Hátterünk &bull; A Te Biztonságod</span>
-          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-6">
-            Miért tervez jobban egy <span class="gold-gradient-text italic">bankár és egy informatikus?</span>
-          </h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
-            Az utazási irodák többsége katalógusokból dolgozik, magas jutalékkal. Mi a saját szakmánk precizitását hozzuk be a szenvedélyünkbe: nem álmodozunk a pénzeddel, hanem professzionálisan menedzseljük az élményedet.
-          </p>
-
-          <div class="space-y-6">
-            <div class="flex items-start gap-4">
-              <div class="p-3 rounded-xl bg-brand-gold/10 border border-brand-gold/20 text-brand-gold shrink-0">
-                <i data-lucide="calculator" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold text-base mb-1">Banki és Pénzügyi Szemlélet</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  Nem engedjük elszállni a büdzsédet. Tudjuk, hol vág át a valutaváltó, hogyan érdemes bankkártyát használni külföldön, és melyik bérautó-biztosítás rejt elkerülhető buktatókat.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="p-3 rounded-xl bg-brand-gold/10 border border-brand-gold/20 text-brand-gold shrink-0">
-                <i data-lucide="code" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold text-base mb-1">Informatikai Hatékonyság</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  Járatfigyelő algoritmusokat, strukturált adatbázisokat használunk. Nem egy elmosódott papírt kapsz a kezedbe, hanem egy zsebben hordozható, kattintható, modern digitális útitervet.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-4">
-              <div class="p-3 rounded-xl bg-brand-gold/10 border border-brand-gold/20 text-brand-gold shrink-0">
-                <i data-lucide="map-pin" class="w-5 h-5"></i>
-              </div>
-              <div>
-                <h4 class="text-white font-semibold text-base mb-1">Személyes Erdélyi Elérhetőség</h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                  Nem egy arctalan nemzetközi weboldal vagyunk. Székelyudvarhelyen személyesen egy kávé mellett, vagy kényelmes videóhívásban beszéljük át a részleteket.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Visual Credibility Card -->
-        <div class="glass-card p-8 rounded-3xl border border-brand-gold/30 relative">
-          <div class="absolute -top-4 -right-4 w-24 h-24 bg-brand-gold/20 rounded-full blur-2xl pointer-events-none"></div>
-          
-          <div class="border-b border-brand-darkBorder pb-6 mb-6">
-            <span class="text-[10px] tracking-widest uppercase text-brand-gold font-semibold">Alapítói Üzenet</span>
-            <h3 class="font-serif text-2xl font-bold text-white mt-1">„Nem utakat adunk el, hanem időt és emléket mentünk.”</h3>
-          </div>
-
-          <div class="space-y-4 text-xs text-slate-300 leading-relaxed">
-            <p>
-              Mi magunk is minden szabadnapunkban a világot járjuk. Pontosan tudjuk, milyen érzés egy átdolgozott év után megérkezni egy olyan szállásra, ami nem úgy néz ki, mint a képeken, vagy órákat vesztegelni egy rosszul kitalált átszállás miatt.
-            </p>
-            <p>
-              A célunk egyszerű: levenni a válladról a 40 órányi kutatási stresszt, optimalizálni a költségvetésedet, és a kezedbe adni a kulcsot a tökéletes utazáshoz.
-            </p>
-          </div>
-
-          <div class="mt-8 pt-6 border-t border-brand-darkBorder flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center text-brand-gold font-serif font-bold text-sm">
-                ST
-              </div>
-              <div>
-                <div class="text-sm font-semibold text-white">Székely Tamás & Csapata</div>
-                <div class="text-[10px] text-slate-400">Gazdasági IT &bull; Székelyudvarhely</div>
-              </div>
-            </div>
-            <div class="font-serif italic text-brand-gold text-lg">Vandor Studio</div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ================= INTAKE & CONSULTATION FORM ================= -->
-  <section id="kapcsolat" class="py-24 bg-[#090c0f] border-t border-brand-darkBorder/40 relative">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6">
-      
-      <div class="text-center max-w-2xl mx-auto mb-12">
-        <span class="text-xs font-semibold uppercase tracking-widest text-brand-gold">Kezdjük el</span>
-        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">Kérj kötetlen konzultációt</h2>
-        <p class="text-slate-400 text-sm">
-          Töltsd ki az alábbi űrlapot az elképzeléseiddel! 24 órán belül felvesszük veled a kapcsolatot egy ingyenes, 20 perces videóhívásra vagy udvarhelyi kávézásra.
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-sunset-gold">Digitális Útikalauz Minta</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">
+          48h in Barcelona under 100€
+        </h2>
+        <p class="text-sunset-sand/90 text-sm">
+          Példa egy digitális útikalauzunkból: nem ellenőrizetlen általános lista, hanem napra bontott, tesztelt árak és konkrét helyszínek.
         </p>
       </div>
 
-      <div class="glass-card rounded-2xl p-6 sm:p-10 border border-brand-gold/30">
-        <form id="travel-inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+      <div class="max-w-4xl mx-auto glass-crystal-highlight rounded-3xl p-6 sm:p-10 relative">
+        
+        <!-- Header badge -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-sunset-gold/20 gap-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="bg-sunset-gold/20 text-sunset-champagne text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full border border-sunset-gold/40">Budget Edition</span>
+              <span class="text-sunset-sand/80 text-xs">Városlátogatás &bull; Fiataloknak / Pároknak</span>
+            </div>
+            <h3 class="font-display text-2xl sm:text-4xl font-bold text-white mt-2">Barcelona Okosan és Szépen</h3>
+            <p class="text-xs text-sunset-sand/90 mt-1">Gyalogos útvonal, tengerparti zárással és eldugott tapasokkal.</p>
+          </div>
+
+          <div class="flex items-center gap-4 bg-black/50 p-4 rounded-2xl border border-sunset-gold/30">
+            <div>
+              <div class="text-[10px] uppercase tracking-wider text-sunset-gold font-bold">Célkeret / fő</div>
+              <div class="text-2xl font-bold text-white font-mono">100 €</div>
+            </div>
+            <div class="border-l border-white/10 pl-4">
+              <div class="text-[10px] uppercase tracking-wider text-sunset-champagne font-bold">Tényleges kalkuláció</div>
+              <div class="text-2xl font-bold text-sunset-champagne font-mono">~ 68 €</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 1 & Day 2 Switcher Tabs -->
+        <div class="flex items-center gap-3 pt-6 pb-2">
+          <button id="tab-day1" onclick="switchBcnDay(1)" class="px-5 py-2 rounded-xl bg-sunset-gold text-sunset-dark font-bold text-xs uppercase tracking-wider transition">
+            Day 1 — Local Barcelona
+          </button>
+          <button id="tab-day2" onclick="switchBcnDay(2)" class="px-5 py-2 rounded-xl bg-black/40 border border-sunset-gold/30 text-sunset-sand hover:text-sunset-gold font-bold text-xs uppercase tracking-wider transition">
+            Day 2 — Panorámák & Bunkers
+          </button>
+        </div>
+
+        <!-- DAY 1 CONTAINER -->
+        <div id="bcn-day-1" class="space-y-4 py-6">
           
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Neved *</label>
-              <input type="text" id="form-name" required placeholder="pl. Kovács Árpád" class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white placeholder-slate-600 outline-none transition">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Telefonszámod / WhatsApp *</label>
-              <input type="tel" id="form-phone" required placeholder="+40 7..." class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white placeholder-slate-600 outline-none transition">
+          <!-- Morning -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold/50 transition">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sunset-gold/15 border border-sunset-gold/30 text-sunset-gold flex items-center justify-center shrink-0">
+                <i data-lucide="coffee" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-sunset-gold uppercase tracking-wider">Reggel &bull; 09:00 - 12:30</span>
+                  <span class="text-xs font-mono text-sunset-champagne bg-sunset-gold/20 px-2 py-0.5 rounded border border-sunset-gold/30">~ 4.50 € / fő</span>
+                </div>
+                <h4 class="text-base font-bold text-white mt-1">Helyi pékség & séta az óvárosban</h4>
+                <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+                  Költségkímélő autentikus reggeli a Baluard Barceloneta kézműves pékségben (frissensült croissant és café con leche), majd kényelmes séta a Gótikus negyed (Barri Gòtic) árnyas, középkori sikátoraiban.
+                </p>
+                <div class="mt-3 flex flex-wrap items-center gap-4 text-[11px] text-sunset-sand/80">
+                  <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-sunset-gold"></i> Google Maps PIN mellékelve</span>
+                  <span class="flex items-center gap-1"><i data-lucide="footprints" class="w-3.5 h-3.5 text-sunset-champagne"></i> 100% gyalogos</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">E-mail címed *</label>
-              <input type="email" id="form-email" required placeholder="pelda@email.com" class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white placeholder-slate-600 outline-none transition">
-            </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Álmodott Úticél / Régió *</label>
-              <input type="text" id="form-destination" required placeholder="pl. Toszkána, Japán, vagy még képlékeny..." class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white placeholder-slate-600 outline-none transition">
+          <!-- Afternoon -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold/50 transition">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sunset-amber/20 border border-sunset-gold/30 text-sunset-gold flex items-center justify-center shrink-0">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-sunset-champagne uppercase tracking-wider">Délután &bull; 13:00 - 18:00</span>
+                  <span class="text-xs font-mono text-sunset-champagne bg-sunset-gold/20 px-2 py-0.5 rounded border border-sunset-gold/30">~ 12.00 € / fő ebéd</span>
+                </div>
+                <h4 class="text-base font-bold text-white mt-1">El Born, kézműves utcák & ingyenes látnivalók</h4>
+                <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+                  A közelben lévő helyszínek egyetlen összefüggő útvonalra rendezve: Santa Maria del Mar bazilika, Parc de la Ciutadella árnyas pálmafái, majd ebéd egy eldugott bodegában (3 fogásos délutáni menü).
+                </p>
+                <div class="mt-3 flex items-center gap-2 text-[11px] text-sunset-sand/90">
+                  <i data-lucide="cloud-rain" class="w-3.5 h-3.5 text-sky-400"></i>
+                  <span><strong>Esős napos opció:</strong> El Born Kulturális Központ fedett ásatásai és kávézója.</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Tervezett időszak</label>
-              <input type="text" id="form-dates" placeholder="pl. 2027 tavasz vagy konkrét dátum" class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white placeholder-slate-600 outline-none transition">
+          <!-- Evening -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold/50 transition">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sunset-coral/20 border border-sunset-coral/40 text-sunset-coral flex items-center justify-center shrink-0">
+                <i data-lucide="sunset" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-sunset-coral uppercase tracking-wider">Este &bull; 19:30 - 22:30</span>
+                  <span class="text-xs font-mono text-sunset-champagne bg-sunset-gold/20 px-2 py-0.5 rounded border border-sunset-gold/30">~ 16.00 € / fő vacsora</span>
+                </div>
+                <h4 class="text-base font-bold text-white mt-1">Naplemente a tengerparton & El Xampanyet tapasok</h4>
+                <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+                  Ingyenes program a tengerparti szikláknál naplementekor a Barcelonetán, majd vacsora a legendás El Xampanyet bárban (házi cava, pan con tomate, ibérico sonka és sült padron paprika).
+                </p>
+                <div class="mt-3 flex items-center gap-2 text-[11px] text-sunset-sand/90">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sunset-gold"></i>
+                  <span>Nincs kötelező asztalfoglalási díj, csak a tiszta fogyasztásod.</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Utazók száma</label>
-              <select id="form-travelers" class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white outline-none transition">
-                <option value="2 felnőtt (Pár)">2 felnőtt (Párban)</option>
-                <option value="Család gyerekkel">Család (Gyerekekkel)</option>
-                <option value="Egyedül (Solo)">Egyedül (Solo)</option>
-                <option value="Baráti társaság (4+ fő)">Baráti társaság (4+ fő)</option>
-              </select>
+          </div>
+
+        </div>
+
+        <!-- DAY 2 CONTAINER (HIDDEN INITIALLY) -->
+        <div id="bcn-day-2" class="space-y-4 py-6 hidden">
+          
+          <!-- Morning D2 -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold/50 transition">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sunset-gold/15 border border-sunset-gold/30 text-sunset-gold flex items-center justify-center shrink-0">
+                <i data-lucide="sun" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-sunset-gold uppercase tracking-wider">Reggel &bull; 09:30 - 12:30</span>
+                  <span class="text-xs font-mono text-sunset-champagne bg-sunset-gold/20 px-2 py-0.5 rounded border border-sunset-gold/30">~ 5.00 € / fő</span>
+                </div>
+                <h4 class="text-base font-bold text-white mt-1">Gràcia negyed & Sagrada Família fotópontok</h4>
+                <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+                  Békés kávézás a Gràcia terek egyikén (Plaça del Sol), majd séta a Gaudí épületek felé. A drága belépők helyett a legszebb, ingyenesen fotózható szögeket járjuk be a parkon át.
+                </p>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Költségkeret (kb. EUR)</label>
-              <select id="form-budget" class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white outline-none transition">
-                <option value="1000 - 2000 €">1 000 - 2 000 €</option>
-                <option value="2000 - 4000 €" selected>2 000 - 4 000 €</option>
-                <option value="4000 - 7000 €">4 000 - 7 000 €</option>
-                <option value="7000 € felett">7 000 € felett (VIP)</option>
-              </select>
+          </div>
+
+          <!-- Afternoon D2 -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold/50 transition">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sunset-amber/20 border border-sunset-gold/30 text-sunset-gold flex items-center justify-center shrink-0">
+                <i data-lucide="utensils" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-sunset-champagne uppercase tracking-wider">Délután &bull; 13:00 - 17:30</span>
+                  <span class="text-xs font-mono text-sunset-champagne bg-sunset-gold/20 px-2 py-0.5 rounded border border-sunset-gold/30">~ 9.50 € / fő</span>
+                </div>
+                <h4 class="text-base font-bold text-white mt-1">Mercat de Santa Caterina piknik & Parc Güell ingyenes zóna</h4>
+                <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+                  A túlárazott Boquería piac helyett a helyiek kedvenc piacán veszünk friss sajtot, olívát és bagettet, majd a Parc Güell panorámás ösvényein piknikezünk.
+                </p>
+              </div>
             </div>
+          </div>
+
+          <!-- Evening D2 -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold/50 transition">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sunset-coral/20 border border-sunset-coral/40 text-sunset-coral flex items-center justify-center shrink-0">
+                <i data-lucide="eye" class="w-6 h-6"></i>
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold text-sunset-coral uppercase tracking-wider">Este &bull; 18:30 - 22:00</span>
+                  <span class="text-xs font-mono text-sunset-champagne bg-sunset-gold/20 px-2 py-0.5 rounded border border-sunset-gold/30">~ 14.00 € / fő</span>
+                </div>
+                <h4 class="text-base font-bold text-white mt-1">Bunkers del Carmel 360° panoráma & vermutozás</h4>
+                <p class="text-xs text-slate-200 mt-1 leading-relaxed">
+                  Barcelona leglélegzetelállítóbb, 360 fokos ingyenes kilátója a város felett az aranyórában, majd leereszkedés a helyi vermutozókhoz egy búcsúkoccintásra.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer Notice from Handwritten Notes -->
+        <div class="p-4 rounded-2xl bg-black/50 border border-sunset-gold/30 text-xs text-sunset-sand/90 flex flex-col sm:flex-row items-center justify-between gap-4 mt-2">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="sparkles" class="w-5 h-5 text-sunset-gold shrink-0"></i>
+            <span>A fizetős verzióban minden helyszínhez pontos cím, Google Maps PIN, becsült időtartam, ellenőrzött ár és esős alternatíva jár.</span>
+          </div>
+          <a href="#kerdoiv" class="px-5 py-2.5 bg-sunset-gold text-sunset-dark rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-sunset-champagne transition whitespace-nowrap">
+            Ilyen tervet kérek
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: THE 4 EXACT PRICING TIERS FROM NOTES ================= -->
+  <section id="csomagok" class="py-24 relative z-10 bg-black/35 backdrop-blur-md border-y border-sunset-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-sunset-gold">Átlátható &bull; Kézzel Írt Árazás</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2 mb-4">
+          Tervezési Csomagjaink
+        </h2>
+        <p class="text-sunset-sand/90 text-sm">
+          Fiataloknak, pároknak és baráti társaságoknak szabott elérhető árak.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Package 1: Mini Trip -->
+        <div class="glass-crystal rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold mb-1">Rövid Városlátogatás</div>
+            <h3 class="font-display text-2xl font-bold text-white">Mini Trip</h3>
+            <p class="text-[11px] text-slate-300 mt-1 mb-5">1-2 napos gyors feltöltődéshez</p>
+            
+            <div class="text-3xl font-display font-bold text-white mb-6">
+              9 – 12 €
+            </div>
+
+            <ul class="space-y-3 text-xs text-sunset-sand/90 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> 1-2 napos útiterv</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Napi programok és térkép</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Olcsó étkezési tippek</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Költségbecslés</li>
+            </ul>
+          </div>
+
+          <button onclick="prefillForm('Mini Trip')" class="w-full py-3 rounded-xl border border-sunset-gold/40 hover:border-sunset-gold text-sunset-sand hover:text-sunset-gold text-xs font-bold uppercase tracking-wider transition bg-black/40">
+            Kiválasztom
+          </button>
+        </div>
+
+        <!-- Package 2: Personalized Trip (HIGHLIGHTED) -->
+        <div class="glass-crystal-highlight rounded-3xl p-7 border-2 border-sunset-gold relative flex flex-col justify-between">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-sunset-gold text-sunset-dark px-3.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-md">
+            Ezt tesztelném először
           </div>
 
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Milyen élményre vágytok a leginkább?</label>
-            <textarea id="form-message" rows="3" placeholder="pl. Nyugodt pihenés, autentikus helyi borok és jó ételek, kevés tömeg, szép kilátás..." class="w-full px-4 py-3 bg-brand-darkCard border border-brand-darkBorder focus:border-brand-gold rounded-xl text-sm text-white placeholder-slate-600 outline-none transition"></textarea>
+            <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold mb-1">Pároknak & Utazóknak</div>
+            <h3 class="font-display text-2xl font-bold text-white">Personalized Trip</h3>
+            <p class="text-[11px] text-slate-300 mt-1 mb-5">3–5 napos személyre szabott terv</p>
+            
+            <div class="text-3xl font-display font-bold text-sunset-gold mb-6">
+              19 – 29 €
+            </div>
+
+            <ul class="space-y-3 text-xs text-sunset-sand/90 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> 3-5 napos személyre szabott terv</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Programok az ügyfél érdeklődése szerint</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Közlekedés, étkezés és költségkeret</li>
+              <li class="flex items-center gap-2 text-sunset-champagne font-bold"><i data-lucide="sparkles" class="w-4 h-4 text-sunset-gold shrink-0"></i> + 1 ingyenes módosítás</li>
+            </ul>
           </div>
 
-          <div class="flex items-center justify-between pt-4">
-            <span class="text-[11px] text-slate-500 flex items-center gap-1.5">
-              <i data-lucide="lock" class="w-3.5 h-3.5 text-brand-gold"></i>
-              Adataidat szigorúan bizalmasan kezeljük.
-            </span>
-            <button type="submit" class="px-8 py-3.5 bg-gradient-to-r from-brand-goldLight via-brand-gold to-brand-goldDark text-brand-dark font-bold text-xs uppercase tracking-widest rounded-xl hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] transition">
-              Kérem az ingyenes konzultációt
+          <button onclick="prefillForm('Personalized Trip')" class="w-full py-3 rounded-xl bg-gradient-to-r from-sunset-champagne via-sunset-gold to-sunset-amber text-sunset-dark text-xs font-extrabold uppercase tracking-wider transition hover:opacity-95 shadow-lg shadow-sunset-amber/40">
+            Ezzel Kezdek
+          </button>
+        </div>
+
+        <!-- Package 3: Social to Trip -->
+        <div class="glass-crystal rounded-3xl p-7 border-2 border-sunset-amber/50 relative flex flex-col justify-between">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-sunset-amber text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-md">
+            Social to Trip
+          </div>
+
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sunset-champagne mb-1">TikTok & Reels Horog</div>
+            <h3 class="font-display text-2xl font-bold text-white">Social to Trip</h3>
+            <p class="text-[11px] text-slate-300 mt-1 mb-5">Elmentett videókból és helyekből</p>
+            
+            <div class="text-3xl font-display font-bold text-sunset-champagne mb-6">
+              19 € <span class="text-xs text-slate-300 font-normal">fix</span>
+            </div>
+
+            <ul class="space-y-3 text-xs text-sunset-sand/90 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Elmentett videókból és helyszínekből</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Bejárható, logikus napi útvonal</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Nyitvatartás & árak ellenőrzése</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-champagne shrink-0"></i> Google Maps gyűjteménybe mentve</li>
+            </ul>
+          </div>
+
+          <button onclick="prefillForm('Social to Trip')" class="w-full py-3 rounded-xl bg-sunset-amber hover:bg-sunset-gold text-sunset-dark text-xs font-extrabold uppercase tracking-wider transition">
+            Videók Beküldése
+          </button>
+        </div>
+
+        <!-- Package 4: Group Trip -->
+        <div class="glass-crystal rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="text-xs font-bold uppercase tracking-wider text-sunset-gold mb-1">Baráti Társaságoknak</div>
+            <h3 class="font-display text-2xl font-bold text-white">Group Trip</h3>
+            <p class="text-[11px] text-slate-300 mt-1 mb-5">Baráti társaságoknak vagy pároknak</p>
+            
+            <div class="text-3xl font-display font-bold text-white mb-6">
+              39 – 59 €
+            </div>
+
+            <ul class="space-y-3 text-xs text-sunset-sand/90 mb-8">
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> 3-5 napos közös útiterv</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Eltérő érdeklődési körök összehangolása</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Közös költségterv (Splitwise kompatibilis)</li>
+              <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-sunset-gold shrink-0"></i> Alternatív programok & személyes egyeztetés</li>
+            </ul>
+          </div>
+
+          <button onclick="prefillForm('Group Trip')" class="w-full py-3 rounded-xl border border-sunset-gold/40 hover:border-sunset-gold text-sunset-sand hover:text-sunset-gold text-xs font-bold uppercase tracking-wider transition bg-black/40">
+            Csapat Tervezése
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5: THE 8-STEP QUESTIONNAIRE (EXACT NOTES INTEGRATION) ================= -->
+  <section id="kerdoiv" class="py-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sunset-gold/15 text-sunset-champagne text-xs font-extrabold uppercase tracking-wider border border-sunset-gold/30 mb-3">
+          <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-sunset-gold"></i> Mintakérdőív
+        </div>
+        <h2 class="font-display text-3xl sm:text-5xl font-bold text-white">Travel Preferences</h2>
+        <p class="text-sunset-sand/90 text-xs sm:text-sm mt-2">
+          Ez egy működő példa arra, milyen információkat gyűjtenél be a leendő ügyfeleidtől.
+        </p>
+      </div>
+
+      <div class="glass-crystal-highlight rounded-3xl p-6 sm:p-10">
+        <form id="travel-pref-form" onsubmit="handlePreferencesSubmit(event)" class="space-y-8">
+          
+          <!-- 1. Hová utaznál? -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-2">
+              1. Hová utaznál?
+            </label>
+            <input type="text" id="q-destination" required placeholder="pl. Barcelona, Bali, Róma, Maldív-szigetek, vagy még képlékeny..." value="Barcelona" class="w-full px-4 py-3.5 glass-input rounded-xl text-sm text-white placeholder-slate-400 outline-none transition">
+          </div>
+
+          <!-- 2. Mennyi időre? -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-3">
+              2. Mennyi időre?
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="duration" value="1–2 nap">
+                <span>1–2 nap</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="radio" name="duration" value="3–5 nap" checked>
+                <span>3–5 nap</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="duration" value="6–10 nap">
+                <span>6–10 nap</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="duration" value="Több mint 10 nap">
+                <span>Több mint 10 nap</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 3. Költségkeret fejenként helyszíni kiadásokra -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white">
+              3. Mekkora a költségkeret fejenként, a helyszíni kiadásokra?
+            </label>
+            <p class="text-[11px] text-sunset-champagne/90 mb-3 italic">Külön tisztázd, hogy a repülőjegy és a szállás benne van-e a keretben.</p>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="budget" value="50–100 €">
+                <span>50–100 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="radio" name="budget" value="100–200 €" checked>
+                <span>100–200 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="budget" value="200–400 €">
+                <span>200–400 €</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="budget" value="400 € felett">
+                <span>400 € felett</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 4. Hányan utaztok? -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-3">
+              4. Hányan utaztok?
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="travelers" value="Egyedül">
+                <span>Egyedül</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="radio" name="travelers" value="2 fő" checked>
+                <span>2 fő (Pár)</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="travelers" value="3–4 fő">
+                <span>3–4 fő</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="travelers" value="5 vagy több fő">
+                <span>5 vagy több fő</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 5. Mi érdekel leginkább? (Többet is) -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-1">
+              5. Mi érdekel leginkább? <span class="text-xs text-sunset-gold font-normal">(Többet is választhatsz)</span>
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mt-3">
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Kultúra és múzeumok">
+                <span>Kultúra & múzeumok</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Helyi ételek" checked>
+                <span>Helyi ételek</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Tengerpart" checked>
+                <span>Tengerpart</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Éjszakai élet">
+                <span>Éjszakai élet</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Természet">
+                <span>Természet</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Rejtett helyek" checked>
+                <span>Rejtett helyek</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Vásárlás">
+                <span>Vásárlás</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="checkbox" name="interest" value="Ingyenes programok">
+                <span>Ingyenes programok</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 6. Milyen tempóban utaznál? -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-3">
+              6. Milyen tempóban utaznál?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="tempo" value="Lazán, sok szabadidővel">
+                <span>Lazán, sok szabadidővel</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="radio" name="tempo" value="Kiegyensúlyozottan" checked>
+                <span>Kiegyensúlyozottan</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="tempo" value="Minél több programot szeretnék">
+                <span>Minél több programot</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 7. Hogyan közlekednél? -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-3">
+              7. Hogyan közlekednél?
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="transport" value="Főként gyalog">
+                <span>Főként gyalog</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold text-sunset-gold font-bold cursor-pointer transition">
+                <input type="radio" name="transport" value="Tömegközlekedés és séta" checked>
+                <span>Tömegközlekedés & séta</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="transport" value="Autóval">
+                <span>Bérautóval</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-3.5 rounded-xl bg-black/40 border border-sunset-gold/20 hover:border-sunset-gold cursor-pointer transition">
+                <input type="radio" name="transport" value="Rugalmas vagyok">
+                <span>Rugalmas vagyok</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 8. Különleges kérés és Mentett Linkek -->
+          <div class="p-5 rounded-2xl bg-black/40 border border-sunset-gold/20">
+            <label class="block text-sm font-bold text-white mb-2">
+              8. Van bármi különleges kérésed? (vagy linkeld be a mentett TikTok / Instagram videóidat)
+            </label>
+            <textarea id="q-special" rows="3" placeholder="Pl. vegetáriánus éttermek, kevés lépcső, naplemente koktélbár, vagy másold be a mentett linkeket..." class="w-full px-4 py-3.5 glass-input rounded-xl text-sm text-white placeholder-slate-400 outline-none transition"></textarea>
+          </div>
+
+          <!-- Kapcsolat adatok -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-sunset-sand mb-1">Neved *</label>
+              <input type="text" id="q-name" required placeholder="Szabó Laura" class="w-full px-4 py-3.5 glass-input rounded-xl text-sm text-white outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-sunset-sand mb-1">WhatsApp / Telefonszám *</label>
+              <input type="tel" id="q-phone" required placeholder="+40 7..." class="w-full px-4 py-3.5 glass-input rounded-xl text-sm text-white outline-none">
+            </div>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-[11px] text-sunset-sand/80 flex items-center gap-1.5">
+              <i data-lucide="shield-check" class="w-4 h-4 text-sunset-gold"></i>
+              Nincs kötelezettség &bull; Ingyenes személyes vagy online egyeztetés Székelyudvarhelyen
+            </div>
+            <button type="submit" class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-sunset-champagne via-sunset-gold to-sunset-coral text-sunset-dark font-black text-xs uppercase tracking-widest rounded-xl hover:shadow-[0_0_30px_rgba(244,192,104,0.6)] transition">
+              Kérdőív Beküldése & Tervezés Indítása
             </button>
           </div>
 
@@ -717,266 +1048,158 @@
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-[#06080a] border-t border-brand-darkBorder py-12 px-4 text-xs text-slate-500">
+  <!-- ================= LUXURY FOOTER ================= -->
+  <footer class="relative z-10 bg-[#080403] border-t border-sunset-gold/20 py-12 px-4 text-xs text-sunset-sand/70">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
       <div>
-        <div class="font-serif text-xl font-bold text-white brand-title-text">Vandor Studio</div>
-        <p class="text-[11px] text-slate-500 mt-1">Boutique Utazási Concierge &bull; Székelyudvarhely, Hargita megye</p>
+        <div class="font-display text-xl font-bold text-white brand-title-text">Vándor Stúdió</div>
+        <p class="text-[11px] text-sunset-sand/70 mt-0.5">Boutique Utazástervező Atelier &bull; Székelyudvarhely, Hargita megye</p>
       </div>
-      <div class="flex items-center gap-6">
-        <a href="#itinerary" class="hover:text-brand-gold transition">Útiterv Demó</a>
-        <a href="#kalkulator" class="hover:text-brand-gold transition">Kalkulátor</a>
-        <a href="#csomagok" class="hover:text-brand-gold transition">Csomagok</a>
-        <a href="#kapcsolat" class="hover:text-brand-gold transition">Konzultáció</a>
+
+      <div class="flex items-center gap-6 font-semibold">
+        <a href="#saved-to-reality" class="hover:text-sunset-gold transition">Saved to Reality</a>
+        <a href="#megkulonboztetes" class="hover:text-sunset-gold transition">A 3 Titkunk</a>
+        <a href="#barcelona-demo" class="hover:text-sunset-gold transition">Barcelona 100€</a>
+        <a href="#csomagok" class="hover:text-sunset-gold transition">Csomagok</a>
+        <a href="#kerdoiv" class="hover:text-sunset-gold transition">Kérdőív</a>
       </div>
+
       <div>
-        &copy; <span id="year"></span> Minden jog fenntartva.
+        &copy; <span id="current-year"></span> Minden jog fenntartva.
       </div>
     </div>
   </footer>
 
-  <!-- ================= SUBMIT NOTIFICATION MODAL / TOAST ================= -->
-  <div id="toast-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden transition-opacity">
-    <div class="bg-brand-darkCard border border-brand-gold p-8 rounded-2xl max-w-md w-full text-center relative subtle-glow">
-      <div class="w-14 h-14 bg-brand-gold/10 border border-brand-gold rounded-full flex items-center justify-center text-brand-gold mx-auto mb-4">
-        <i data-lucide="check-circle" class="w-8 h-8"></i>
+  <!-- ================= MODAL TOAST FOR SUBMIT ================= -->
+  <div id="pref-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl hidden">
+    <div class="glass-crystal-highlight p-8 rounded-3xl max-w-lg w-full text-center relative border-sunset-gold">
+      <div class="w-16 h-16 bg-sunset-gold/20 border border-sunset-gold rounded-full flex items-center justify-center text-sunset-champagne mx-auto mb-4">
+        <i data-lucide="sunset" class="w-8 h-8 stroke-[2.5]"></i>
       </div>
-      <h3 class="font-serif text-2xl font-bold text-white mb-2">Köszönjük az üzenetet!</h3>
-      <p id="toast-message" class="text-xs text-slate-300 leading-relaxed mb-6">
-        Megkaptuk az érdeklődésedet. 24 órán belül felvesszük veled a kapcsolatot a megadott elérhetőségeken a kötetlen egyeztetéshez.
+      <h3 class="font-display text-2xl font-bold text-white mb-2">Köszönjük a válaszokat!</h3>
+      <div id="modal-summary" class="text-xs text-slate-100 leading-relaxed text-left bg-black/60 p-4 rounded-xl border border-sunset-gold/30 my-4 space-y-1.5 font-mono">
+        <!-- Injected via JS -->
+      </div>
+      <p class="text-[11px] text-sunset-sand/90 mb-6">
+        24 órán belül átnézzük a megadott preferenciákat és a mentett linkeket, majd WhatsAppon küldjük az első bejárható vázlatot és az ingyenes finomhangolási lehetőséget!
       </p>
-      <button onclick="closeToast()" class="px-6 py-2.5 bg-brand-gold text-brand-dark font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-brand-goldLight transition">
-        Rendben
+      <button onclick="closeModal()" class="px-7 py-3 bg-sunset-gold text-sunset-dark font-black text-xs uppercase tracking-wider rounded-xl hover:bg-sunset-champagne transition">
+        Rendben, várom a tervet!
       </button>
     </div>
   </div>
 
-  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <!-- ================= LOGIC & SCRIPTS ================= -->
   <script>
-    // Initialize current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // 1. BRAND NAME LIVE SWITCHER
-    function setBrandName(name) {
-      // Replace all brand-title-text instances
-      document.querySelectorAll('.brand-title-text').forEach(el => {
-        el.textContent = name;
-      });
-      // Active pill styling
-      document.querySelectorAll('.brand-pill').forEach(pill => {
-        if(pill.getAttribute('data-name') === name) {
-          pill.classList.add('border-brand-gold', 'text-brand-gold', 'bg-brand-gold/10');
-          pill.classList.remove('border-brand-darkBorder', 'text-slate-300', 'bg-brand-darkCard');
-        } else {
-          pill.classList.remove('border-brand-gold', 'text-brand-gold', 'bg-brand-gold/10');
-          pill.classList.add('border-brand-darkBorder', 'text-slate-300', 'bg-brand-darkCard');
-        }
-      });
-    }
-
-    // 2. ITINERARY DAY SWITCHER
-    const itineraryData = {
-      1: {
-        title: "1. Nap: Érkezés Firenzébe, Bérautó & Naplemente Val d'Orcia dombjain",
-        time: "11:30 - 20:30",
-        highlight: "Panoráma Agriturismo bejelentkezés és privát toszkán vacsora",
-        steps: [
-          { time: "11:30", text: "Landolás Firenze (FLR) vagy Pisa (PSA) repterén. Gyors kijutás, kézipoggyász privilégium." },
-          { time: "12:15", text: "Bérautó átvétel: A mi belső linkünkkel előre egyeztetett pult, 0 önrészes biztosítás (nincs 1000€ zárolás a kártyán!)." },
-          { time: "14:30", text: "Panoráma utazás a híres SR2-es úton délre. Első espresso megálló San Quirico d'Orcia falucskájában." },
-          { time: "17:30", text: "Bejelentkezés az Agriturismo Poggio Covili kővillába (a híres ciprussoros villa)." },
-          { time: "19:30", text: "Vacsora a helyi borász teraszán: Vadpörkölt házi pici tésztával és Rosso di Montalcino borral." }
-        ],
-        tip: "Banki tipp: A firenzei autópálya-kapuknál mindig a sárga TELEPASS sávot kerüld el, és Revoluttal érintsd a fizetőkaput, így elkerülöd a román bankok 2-3%-os dinamikus átváltási díját."
-      },
-      2: {
-        title: "2. Nap: Pienza reneszánsz utcái, Pecorino sajtfarm & Gladiátor kilátó",
-        time: "09:00 - 21:00",
-        highlight: "A Gladiátor film zárójelenetének helyszíne és pecorino kóstoló",
-        steps: [
-          { time: "09:00", text: "Reggeli házi fügelekvárral és friss ricottával a villa teraszán a reggeli ködben." },
-          { time: "10:30", text: "Séta Pienza sikátoraiban (Via del Bacio, Via dell'Amore) – a tökéletes reneszánsz városka." },
-          { time: "13:00", text: "Látogatás a Podere Il Casale biogazdaságban: 6 féle pecorino sajt kóstoló helyi olívaolajjal." },
-          { time: "16:30", text: "Gladiator Meadow séta: A híres film mezei fala, tökéletes délutáni fények fényképezéshez." },
-          { time: "19:30", text: "Naplemente vacsora a Trattoria da Fiorella-ban (előre lefoglalt asztal a panoráma sarokban)." }
-        ],
-        tip: "IT & Maps tipp: A Gladiátor mezőhöz vezető földút le van zárva az átlag turisták elől; a digitális appunkban megadott pontos Google Maps PIN-nél érdemes leparkolni a ciprusok alatt."
-      },
-      3: {
-        title: "3. Nap: Montepulciano földalatti borlabirintusa és rejtett dűlők",
-        time: "10:00 - 20:00",
-        highlight: "Több száz éves borospincék a reneszánsz paloták alatt",
-        steps: [
-          { time: "10:00", text: "Utazás Montepulciano hegyi erődvárosába. Parkolás a P1-es kapunál a digitális térképünk szerint." },
-          { time: "11:30", text: "Privát bejárás a Cantina De' Ricci földalatti katedrális borpincéjében." },
-          { time: "14:00", text: "Könnyű toszkán hidegtál és Vino Nobile kóstoló a Piazza Grande reneszánsz terén." },
-          { time: "17:00", text: "Fotós kitérő a Vitaleta kápolnához (Capella della Madonna di Vitaleta) a legszebb aranyórában." }
-        ],
-        tip: "Költségtipp: Ne a főutcán vásárolj bort; a borászattal közvetlen partnereink révén kartonos házhozszállítást tudunk intézni Székelyudvarhelyre szállítva is."
-      },
-      4: {
-        title: "4. Nap: Természetes kénes termálvizek: Bagno Vignoni & Saturnia",
-        time: "09:30 - 18:30",
-        highlight: "Gőzölgő melegvízű mészkőmedencék a szabad ég alatt",
-        steps: [
-          { time: "09:30", text: "Látogatás Bagno Vignoni falujába, ahol a főtér egy gigantikus melegvízű termálmedence." },
-          { time: "12:00", text: "Könnyű ebéd és helyi szarvasgombás bruschetta a téren." },
-          { time: "14:00", text: "Fürdőzés a Cascate del Mulino természetes vízeséseinél (Saturnia) – teljesen ingyenes természeti élmény." },
-          { time: "19:00", text: "Visszatérés a villába, laza kerti grill toszkán alapanyagokból." }
-        ],
-        tip: "Praktikus tanács: Satruniánál vigyetek vízicipőt, és a táskát hagyjátok az autó csomagtartójában elrejtve, amit már az induláskor elrendeztek."
-      },
-      5: {
-        title: "5. Nap: San Gimignano tornyai, a világ legjobb fagylaltja & Hazautazás",
-        time: "10:00 - 18:00",
-        highlight: "Középkori tornyok és Gelateria Dondoli díjnyertes fagylalt",
-        steps: [
-          { time: "10:00", text: "Kijelentkezés a villából, észak felé indulás San Gimignano felé." },
-          { time: "11:30", text: "Séta a 14 középkori torony között, fagylaltozás a többszörös világbajnok Dondolinál." },
-          { time: "15:00", text: "Érkezés a firenzei repülőtérre, bérautó 5 perces leadása teli tankkal." },
-          { time: "17:30", text: "Felszállás hazafelé, tele életre szóló élményekkel és receptekkel." }
-        ],
-        tip: "Hazautazási tipp: A repülőtér közvetlen közelében lévő benzinkutat jelöltük be a térképen, így elkerülöd a reptéri autókölcsönzők 30-40%-os üzemanyag-újratöltési pótdíját."
-      }
-    };
-
-    function switchDay(dayNum) {
-      // Update buttons
-      document.querySelectorAll('.day-tab').forEach((tab, index) => {
-        if(index + 1 === dayNum) {
-          tab.classList.add('bg-brand-gold', 'text-brand-dark', 'border-brand-gold');
-          tab.classList.remove('bg-brand-darkCard', 'text-slate-300', 'border-brand-darkBorder');
-        } else {
-          tab.classList.remove('bg-brand-gold', 'text-brand-dark', 'border-brand-gold');
-          tab.classList.add('bg-brand-darkCard', 'text-slate-300', 'border-brand-darkBorder');
-        }
-      });
-
-      const data = itineraryData[dayNum];
-      const container = document.getElementById('day-content');
-
-      let stepsHtml = data.steps.map(step => `
-        <div class="flex items-start gap-4 pb-3 border-b border-white/5 last:border-0 last:pb-0">
-          <span class="font-mono text-brand-gold font-bold text-xs shrink-0 mt-0.5 bg-brand-gold/10 px-2 py-0.5 rounded border border-brand-gold/20">${step.time}</span>
-          <p class="text-xs sm:text-sm text-slate-300">${step.text}</p>
-        </div>
-      `).join('');
-
-      container.innerHTML = `
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-          <h4 class="font-serif text-lg sm:text-xl font-bold text-white">${data.title}</h4>
-          <span class="text-xs font-mono text-brand-gold font-medium"><i data-lucide="clock" class="w-3.5 h-3.5 inline mr-1"></i>${data.time}</span>
-        </div>
-        <div class="inline-block bg-brand-gold/10 text-brand-goldLight border border-brand-gold/20 px-3 py-1 rounded-full text-xs font-medium mb-6">
-          Kiemelt élmény: ${data.highlight}
-        </div>
-        <div class="space-y-4 mb-6">
-          ${stepsHtml}
-        </div>
-        <div class="bg-brand-dark/90 p-4 rounded-xl border border-brand-gold/30 text-xs text-slate-300 flex items-start gap-3">
-          <i data-lucide="lightbulb" class="w-5 h-5 text-brand-gold shrink-0 mt-0.5"></i>
-          <div>
-            <strong class="text-brand-gold">Boutique Concierge Titok:</strong> ${data.tip}
-          </div>
-        </div>
-      `;
-
-      lucide.createIcons();
-    }
-
-    // Initialize Day 1
-    switchDay(1);
-
-    // 3. TRIP COST & CONCIERGE CALCULATOR LOGIC
-    let currentStyle = 'boutique';
-    let currentDest = 'europe';
-
-    function setStyle(style) {
-      currentStyle = style;
-      document.querySelectorAll('.style-btn').forEach(btn => {
-        btn.classList.remove('border-brand-gold', 'bg-brand-gold/10');
-        btn.classList.add('border-brand-darkBorder', 'bg-brand-darkCard');
-        btn.querySelector('.text-brand-gold')?.classList.replace('text-brand-gold', 'text-white');
-      });
-      const active = document.getElementById(`btn-style-${style}`);
-      active.classList.add('border-brand-gold', 'bg-brand-gold/10');
-      active.querySelector('div').classList.add('text-brand-gold');
-      updateCalculator();
-    }
-
-    function setDest(dest) {
-      currentDest = dest;
-      document.querySelectorAll('.dest-btn').forEach(btn => {
-        btn.classList.remove('border-brand-gold', 'bg-brand-gold/10');
-        btn.classList.add('border-brand-darkBorder', 'bg-brand-darkCard');
-        btn.querySelector('.text-brand-gold')?.classList.replace('text-brand-gold', 'text-white');
-      });
-      const active = document.getElementById(`btn-dest-${dest}`);
-      active.classList.add('border-brand-gold', 'bg-brand-gold/10');
-      active.querySelector('div').classList.add('text-brand-gold');
-      updateCalculator();
-    }
-
-    function updateCalculator() {
-      const days = parseInt(document.getElementById('calc-days').value);
-      document.getElementById('calc-days-label').textContent = `${days} nap`;
-
-      // Multipliers
-      let dailyBudgetPerCouple = 240; // boutique europe base
-      let conciergeFee = 160;
-
-      if(currentStyle === 'smart') dailyBudgetPerCouple = 160;
-      if(currentStyle === 'luxury') dailyBudgetPerCouple = 480;
-
-      if(currentDest === 'roadtrip') dailyBudgetPerCouple += 60; // car & gas
-      if(currentDest === 'exotic') dailyBudgetPerCouple += 40; // flights distribution
-
-      // Concierge fee calculation
-      if(days <= 5) {
-        conciergeFee = 150;
-      } else if(days <= 9) {
-        conciergeFee = 250;
+    // 1. DYNAMIC BACKGROUND CONTROLLER (PRESETS + CUSTOM ONLINE URL)
+    function changeBackgroundPreset(url) {
+      if (url === 'custom') {
+        promptCustomBg();
       } else {
-        conciergeFee = 380;
+        applyBackground(url);
       }
-
-      if(currentStyle === 'luxury') conciergeFee += 100;
-
-      const totalBudget = Math.round(dailyBudgetPerCouple * days);
-      const agencyPrice = Math.round(totalBudget * 1.35 + 150);
-      const savings = agencyPrice - totalBudget;
-
-      document.getElementById('calc-total-budget').textContent = `${totalBudget.toLocaleString()} €`;
-      document.getElementById('calc-agency-price').textContent = `${agencyPrice.toLocaleString()} €`;
-      document.getElementById('calc-savings').textContent = `~ ${savings.toLocaleString()} €`;
-      document.getElementById('calc-concierge-fee').textContent = `${conciergeFee} €`;
     }
 
-    // 4. FORM SUBMISSION HANDLER
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('form-name').value;
-      const destination = document.getElementById('form-destination').value;
-      const budget = document.getElementById('form-budget').value;
+    function promptCustomBg() {
+      const userUrl = prompt(
+        "Másold be a kívánt online GIF vagy háttérkép közvetlen linkjét:\n(pl. https://media.giphy.com/media/.../giphy.gif)",
+        "https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif"
+      );
+      if (userUrl && userUrl.trim().length > 5) {
+        applyBackground(userUrl.trim());
+      }
+    }
 
-      document.getElementById('toast-message').innerHTML = `
-        Kedves <strong class="text-brand-gold">${name}</strong>!<br><br>
-        Rögzítettük az érdeklődésedet a következő célpontra: <strong class="text-white">${destination}</strong> (${budget} kerettel).<br>
-        24 órán belül felkeresünk a megadott telefonszámon, hogy egyeztessük a részleteket!
-      `;
+    function applyBackground(url) {
+      const bgImg = document.getElementById('golden-canvas-bg');
+      bgImg.style.opacity = '0';
+      setTimeout(() => {
+        bgImg.src = url;
+        bgImg.onload = () => {
+          bgImg.style.opacity = '1';
+        };
+      }, 300);
+    }
 
-      document.getElementById('toast-modal').classList.remove('hidden');
-      document.getElementById('travel-inquiry-form').reset();
+    // 2. BRAND NAME SWITCHER
+    function setBrandName(name) {
+      document.querySelectorAll('.brand-title-text').forEach(el => el.textContent = name);
+      document.querySelectorAll('.brand-pill').forEach(pill => {
+        if (pill.getAttribute('data-name') === name) {
+          pill.classList.add('border-sunset-gold', 'text-sunset-gold', 'bg-sunset-gold/20');
+          pill.classList.remove('border-white/10', 'text-slate-300', 'bg-black/40');
+        } else {
+          pill.classList.remove('border-sunset-gold', 'text-sunset-gold', 'bg-sunset-gold/20');
+          pill.classList.add('border-white/10', 'text-slate-300', 'bg-black/40');
+        }
+      });
+    }
+
+    // 3. BARCELONA DAY 1 / DAY 2 SWITCHER
+    function switchBcnDay(day) {
+      const d1 = document.getElementById('bcn-day-1');
+      const d2 = document.getElementById('bcn-day-2');
+      const btn1 = document.getElementById('tab-day1');
+      const btn2 = document.getElementById('tab-day2');
+
+      if (day === 1) {
+        d1.classList.remove('hidden');
+        d2.classList.add('hidden');
+        btn1.className = "px-5 py-2 rounded-xl bg-sunset-gold text-sunset-dark font-bold text-xs uppercase tracking-wider transition";
+        btn2.className = "px-5 py-2 rounded-xl bg-black/40 border border-sunset-gold/30 text-sunset-sand hover:text-sunset-gold font-bold text-xs uppercase tracking-wider transition";
+      } else {
+        d1.classList.add('hidden');
+        d2.classList.remove('hidden');
+        btn2.className = "px-5 py-2 rounded-xl bg-sunset-gold text-sunset-dark font-bold text-xs uppercase tracking-wider transition";
+        btn1.className = "px-5 py-2 rounded-xl bg-black/40 border border-sunset-gold/30 text-sunset-sand hover:text-sunset-gold font-bold text-xs uppercase tracking-wider transition";
+      }
       lucide.createIcons();
     }
 
-    function closeToast() {
-      document.getElementById('toast-modal').classList.add('hidden');
+    // 4. PREFILL FORM FROM PACKAGES
+    function prefillForm(pkgName) {
+      document.getElementById('kerdoiv').scrollIntoView({ behavior: 'smooth' });
+      const special = document.getElementById('q-special');
+      special.value = `[Kiválasztott csomag: ${pkgName}] ` + special.value;
+      special.focus();
     }
 
-    // Run calculator on init
-    updateCalculator();
+    // 5. QUESTIONNAIRE SUBMISSION
+    function handlePreferencesSubmit(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('q-name').value;
+      const phone = document.getElementById('q-phone').value;
+      const dest = document.getElementById('q-destination').value;
+      const dur = document.querySelector('input[name="duration"]:checked')?.value || '3-5 nap';
+      const bud = document.querySelector('input[name="budget"]:checked')?.value || '100-200 €';
+      const trav = document.querySelector('input[name="travelers"]:checked')?.value || '2 fő';
+      const tempo = document.querySelector('input[name="tempo"]:checked')?.value || 'Kiegyensúlyozottan';
+      const transp = document.querySelector('input[name="transport"]:checked')?.value || 'Tömegközlekedés & séta';
+
+      const interests = Array.from(document.querySelectorAll('input[name="interest"]:checked'))
+                             .map(cb => cb.value).join(', ') || 'Általános élmények';
+
+      const summary = `
+        <div><strong class="text-sunset-gold">Ügyfél:</strong> ${name} (${phone})</div>
+        <div><strong class="text-sunset-gold">Úticél:</strong> ${dest} &bull; ${dur} (${trav})</div>
+        <div><strong class="text-sunset-gold">Helyszíni keret:</strong> ${bud} / fő</div>
+        <div><strong class="text-sunset-gold">Fő fókusz:</strong> ${interests}</div>
+        <div><strong class="text-sunset-gold">Stílus:</strong> ${tempo} &bull; ${transp}</div>
+      `;
+
+      document.getElementById('modal-summary').innerHTML = summary;
+      document.getElementById('pref-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('pref-modal').classList.add('hidden');
+    }
+
+    // Initialize Lucide Icons
     lucide.createIcons();
   </script>
 </body>
